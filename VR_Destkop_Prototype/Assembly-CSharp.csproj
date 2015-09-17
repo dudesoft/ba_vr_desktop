@@ -45,6 +45,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\HandAppearanceController.cs" />
      <Compile Include="Assets\Myo Samples\Scripts\ColorBoxByPose.cs" />
      <Compile Include="Assets\Myo Samples\Scripts\JointOrientation.cs" />
      <Compile Include="Assets\Myo Samples\Scripts\SampleSceneGUI.cs" />
@@ -86,10 +87,13 @@
      <Compile Include="Assets\OVR\Scripts\Util\OVRSceneSampleController.cs" />
      <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
      <Compile Include="Assets\OVR\Scripts\Util\OVRTrackerBounds.cs" />
-     <Compile Include="Assets\ResetArmPosition.cs" />
      <Compile Include="Assets\Scripts\CursorPositionScript.cs" />
+     <Compile Include="Assets\Scripts\IconController.cs" />
+     <Compile Include="Assets\Scripts\ObjectMarker.cs" />
+     <Compile Include="Assets\Scripts\ResetArmPosition.cs" />
      <Compile Include="Assets\Scripts\VRConstants.cs" />
      <None Include="Assets\Plugins\Android\assets\donotdelete.txt" />
+     <None Include="Assets\README.txt" />
      <None Include="Assets\OVR\Moonlight\Shaders\OVRColorRampAlpha.shader" />
      <None Include="Assets\OVR\Moonlight\Shaders\Unlit Crosshair.shader" />
      <None Include="Assets\OVR\Moonlight\Resources\Unlit Transparent Color.shader" />

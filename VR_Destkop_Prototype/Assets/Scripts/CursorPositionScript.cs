@@ -8,11 +8,12 @@ using VibrationType = Thalmic.Myo.VibrationType;
 
 public class CursorPositionScript : MonoBehaviour
 {
+    public float armLength;
+    public GameObject handModel;
 
-    public float armLength = VRConstants.ARM_LENGTH;
-
-    GameObject armReference;
     GameObject myo;
+    GameObject armReference;
+    GameObject selectedObject;
     ThalmicMyo thalmicMyo;
     Animator animator;
 
@@ -35,11 +36,31 @@ public class CursorPositionScript : MonoBehaviour
 
         if (thalmicMyo.pose == Pose.Fist)
         {
-            animator.SetBool("IsClosed", true);
+            if (selectedObject != null)
+            {
+                animator.SetBool("IsClosed", true);
+                selectedObject.SendMessage("Grab");
+            }
         }
         else
         {
-            animator.SetBool("IsClosed", false);
+            if (selectedObject != null)
+            {
+                animator.SetBool("IsClosed", false);
+                selectedObject.SendMessage("Release");
+            }
         }
+    }
+
+    void SelectObject(GameObject gameObject)
+    {
+        selectedObject = gameObject;
+        handModel.SendMessage("SetTransparency", 0.5f);
+    }
+
+    void DeselectObject()
+    {
+        selectedObject = null;
+        handModel.SendMessage("SetTransparency", 1f);
     }
 }
