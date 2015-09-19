@@ -20,12 +20,14 @@ public class ObjectMarker : MonoBehaviour
                 return;
             }
             selectedObject = hit.transform.gameObject;
+            selectedObject.SendMessage("Select");
             cursor.SendMessage("SelectObject", selectedObject);
         }
         else
         {
             if (selectedObject != null)
             {
+                selectedObject.SendMessage("Deselect");
                 selectedObject = null;
                 cursor.SendMessage("DeselectObject");
             }
