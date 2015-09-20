@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-using LockingPolicy = Thalmic.Myo.LockingPolicy;
 using Pose = Thalmic.Myo.Pose;
-using UnlockType = Thalmic.Myo.UnlockType;
-using VibrationType = Thalmic.Myo.VibrationType;
 
 public class CursorPositionScript : MonoBehaviour
 {
@@ -13,7 +10,6 @@ public class CursorPositionScript : MonoBehaviour
 
     GameObject myo;
     GameObject armReference;
-    GameObject selectedObject;
     ThalmicMyo thalmicMyo;
     Animator animator;
 
@@ -36,31 +32,11 @@ public class CursorPositionScript : MonoBehaviour
 
         if (thalmicMyo.pose == Pose.Fist)
         {
-            if (selectedObject != null)
-            {
-                animator.SetBool("IsClosed", true);
-                selectedObject.SendMessage("Grab");
-            }
+            animator.SetBool("IsClosed", true);
         }
         else
         {
-            if (selectedObject != null)
-            {
-                animator.SetBool("IsClosed", false);
-                selectedObject.SendMessage("Release");
-            }
+            animator.SetBool("IsClosed", false);
         }
-    }
-
-    void SelectObject(GameObject gameObject)
-    {
-        selectedObject = gameObject;
-        handModel.SendMessage("SetTransparency", 0.5f);
-    }
-
-    void DeselectObject()
-    {
-        selectedObject = null;
-        handModel.SendMessage("SetTransparency", 1f);
     }
 }

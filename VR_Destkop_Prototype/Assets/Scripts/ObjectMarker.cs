@@ -21,7 +21,6 @@ public class ObjectMarker : MonoBehaviour
             }
             selectedObject = hit.transform.gameObject;
             selectedObject.SendMessage("Select");
-            cursor.SendMessage("SelectObject", selectedObject);
         }
         else
         {
@@ -29,7 +28,6 @@ public class ObjectMarker : MonoBehaviour
             {
                 selectedObject.SendMessage("Deselect");
                 selectedObject = null;
-                cursor.SendMessage("DeselectObject");
             }
         }
     }

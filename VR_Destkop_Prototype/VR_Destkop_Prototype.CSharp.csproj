@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GestureProgress.cs" />
     <Compile Include="Assets\Myo Samples\Scripts\ColorBoxByPose.cs" />
     <Compile Include="Assets\Myo Samples\Scripts\JointOrientation.cs" />
     <Compile Include="Assets\Myo Samples\Scripts\SampleSceneGUI.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Assets\Scripts\CursorPositionScript.cs" />
     <Compile Include="Assets\Scripts\HandAppearanceController.cs" />
     <Compile Include="Assets\Scripts\IconController.cs" />
+    <Compile Include="Assets\Scripts\MethodCaller.cs" />
     <Compile Include="Assets\Scripts\ObjectMarker.cs" />
     <Compile Include="Assets\Scripts\ResetArmPosition.cs" />
     <Compile Include="Assets\Scripts\VRConstants.cs" />
