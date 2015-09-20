@@ -3,20 +3,14 @@ using System.Collections;
 
 public class ObjectMarker : MonoBehaviour
 {
-    GameObject selectedObject;
-    GameObject cursor;
-    RaycastHit hit;
-
-    void Start()
-    {
-        cursor = GameObject.Find("Cursor Hand");
-    }
+    private GameObject selectedObject;
+    private RaycastHit hit;
 
     void Update()
     {
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
-            if (hit.transform.gameObject == selectedObject) { 
+            if (selectedObject != null) { 
                 return;
             }
             selectedObject = hit.transform.gameObject;

@@ -63,6 +63,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 467134}
   - 212: {fileID: 21226988}
+  - 114: {fileID: 11470644}
   m_Layer: 5
   m_Name: Make Fist
   m_TagString: Untagged
@@ -79,6 +80,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 498494}
   - 212: {fileID: 21270200}
+  - 114: {fileID: 11431940}
   m_Layer: 5
   m_Name: Wave Left
   m_TagString: Untagged
@@ -127,6 +129,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 465414}
   - 212: {fileID: 21253300}
+  - 114: {fileID: 11406322}
   m_Layer: 5
   m_Name: Wave Right
   m_TagString: Untagged
@@ -294,7 +297,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.26999998, y: 0, z: 8.06000042}
+  m_LocalPosition: {x: 7.44999981, y: 0, z: 8.06000042}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 454328}
@@ -578,8 +581,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cd0661cb466f24faa1437be2ffab2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectDistance: 20
+  objectDistance: 15
+  gestureTime: 2
   instructionHolder: {fileID: 123998}
+--- !u!114 &11406322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190eb839d3a519543a82152d9c69662a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressStates:
+  - {fileID: 21300018, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300020, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300022, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300024, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300026, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300028, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300030, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300032, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300034, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+--- !u!114 &11431940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190eb839d3a519543a82152d9c69662a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressStates:
+  - {fileID: 21300018, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300020, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300022, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300024, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300026, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300028, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300030, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300032, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300034, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+--- !u!114 &11470644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190eb839d3a519543a82152d9c69662a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressStates:
+  - {fileID: 21300018, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300020, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300022, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300024, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300026, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300028, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300030, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300032, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 21300034, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
 --- !u!212 &21202322
 SpriteRenderer:
   m_ObjectHideFlags: 1
