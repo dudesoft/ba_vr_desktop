@@ -6,7 +6,6 @@ using Pose = Thalmic.Myo.Pose;
 public class CursorPositionScript : MonoBehaviour
 {
     public float armLength;
-    public GameObject handModel;
 
     GameObject myo;
     GameObject armReference;

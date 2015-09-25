@@ -967,7 +967,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armLength: 20
-  handModel: {fileID: 104576}
 --- !u!137 &13700946
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
