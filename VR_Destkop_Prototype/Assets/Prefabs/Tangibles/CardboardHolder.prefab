@@ -408,9 +408,10 @@ GameObject:
   - 114: {fileID: 11483104}
   - 114: {fileID: 11464526}
   - 95: {fileID: 9528946}
+  - 114: {fileID: 11432236}
   m_Layer: 0
   m_Name: CardboardHolder
-  m_TagString: ManipulableObject
+  m_TagString: Tangible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -442,7 +443,7 @@ Transform:
   m_Children:
   - {fileID: 453720}
   m_Father: {fileID: 483008}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &402442
 Transform:
   m_ObjectHideFlags: 1
@@ -652,7 +653,7 @@ Transform:
   m_Children:
   - {fileID: 413546}
   m_Father: {fileID: 483008}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &478428
 Transform:
   m_ObjectHideFlags: 1
@@ -714,8 +715,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400394}
   - {fileID: 475612}
+  - {fileID: 400394}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &483618
@@ -1038,15 +1039,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressStates:
-  - {fileID: 21300018, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300020, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300022, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300024, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300026, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300028, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300030, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300032, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300034, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &11432236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb73bed3fe783b44bb5dd80ba738526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tangibleType: 1
 --- !u!114 &11464526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1084,15 +1097,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressStates:
-  - {fileID: 21300018, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300020, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300022, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300024, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300026, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300028, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300030, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300032, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300034, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11482916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1105,15 +1118,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressStates:
-  - {fileID: 21300018, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300020, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300022, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300024, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300026, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300028, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300030, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300032, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300034, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11483104
 MonoBehaviour:
   m_ObjectHideFlags: 1

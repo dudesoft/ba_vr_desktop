@@ -15,9 +15,10 @@ GameObject:
   - 54: {fileID: 5417434}
   - 108: {fileID: 10897260}
   - 111: {fileID: 11150744}
+  - 114: {fileID: 11474074}
   m_Layer: 0
   m_Name: Application Object
-  m_TagString: ManipulableObject
+  m_TagString: Tangible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -612,15 +613,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressStates:
-  - {fileID: 21300018, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300020, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300022, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300024, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300026, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300028, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300030, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300032, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300034, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11431940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -633,15 +634,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressStates:
-  - {fileID: 21300018, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300020, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300022, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300024, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300026, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300028, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300030, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300032, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300034, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11470644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -654,15 +655,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressStates:
-  - {fileID: 21300018, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300020, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300022, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300024, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300026, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300028, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300030, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300032, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
-  - {fileID: 21300034, guid: e2bbc8ae37afa994cb77d5b0cb0e42c9, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &11474074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb73bed3fe783b44bb5dd80ba738526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tangibleType: 1
 --- !u!212 &21202322
 SpriteRenderer:
   m_ObjectHideFlags: 1

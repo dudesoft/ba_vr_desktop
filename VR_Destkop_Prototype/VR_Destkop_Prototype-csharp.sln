@@ -1,9 +1,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{4D74415C-35E7-30DD-05B7-0CEEF176FBEE}") = "VR_Destkop_Prototype", "Assembly-CSharp.csproj", "{5361522B-F06B-2C0B-FA43-6EC828E820E8}"
+Project("{4D74415C-35E7-30DD-05B7-0CEEF176FBEE}") = "VR_Destkop_Prototype", "Assembly-CSharp-vs.csproj", "{5361522B-F06B-2C0B-FA43-6EC828E820E8}"
 EndProject
-Project("{4D74415C-35E7-30DD-05B7-0CEEF176FBEE}") = "VR_Destkop_Prototype", "Assembly-CSharp-Editor.csproj", "{97CECB59-E540-9647-A397-2BF3D8016C0D}"
+Project("{4D74415C-35E7-30DD-05B7-0CEEF176FBEE}") = "VR_Destkop_Prototype", "Assembly-CSharp-Editor-vs.csproj", "{97CECB59-E540-9647-A397-2BF3D8016C0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,7 +23,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																								GlobalSection(MonoDevelopProperties) = preSolution
+			GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
