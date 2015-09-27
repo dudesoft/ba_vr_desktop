@@ -26,8 +26,7 @@ public class SelectionManager : MonoBehaviour
 	
 	public static SelectionManager GetInstance ()
 	{
-		if (!instance) 
-		{
+		if (!instance) {
 			instance = (SelectionManager)GameObject.FindObjectOfType (typeof(SelectionManager));
 		}
 		return instance;
@@ -41,37 +40,22 @@ public class SelectionManager : MonoBehaviour
 
 	void Update ()
 	{
-		UpdateRotation ();
 		HandleSelection ();
 	}
 
 	private void HandleSelection ()
 	{
-		if (Physics.Raycast (armTransform.position, armTransform.forward, out hit)) 
-		{
-			if (selectedObject != null) 
-			{
+		if (Physics.Raycast (armTransform.position, armTransform.forward, out hit)) {
+			if (selectedObject != null) {
 				return;
 			}
 			selectedObject = hit.transform.gameObject;
 			OnSelect (hit.transform.gameObject);
 		} else {
-			if (selectedObject != null) 
-			{
+			if (selectedObject != null) {
+				OnDeselect (selectedObject);
 				selectedObject = null;
 			}
 		}
-	}
-
-	private void UpdateRotation ()
-	{
-		myoDirection = poseManager.GetCurrentDirection ();
-		// reset position of cursor
-		if (Input.GetKeyDown (KeyCode.Space) )//|| poseManager.GetCurrentPose () == ApplicationConstants.DefaultPose.RESET) 
-		{
-			antiYaw = Quaternion.FromToRotation (myoDirection, Camera.main.transform.forward);
-		}
-
-		armTransform.rotation = antiYaw * Quaternion.LookRotation (myoDirection);
 	}
 }

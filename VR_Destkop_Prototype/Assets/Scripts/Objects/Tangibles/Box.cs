@@ -4,14 +4,16 @@ using System;
 
 public class Box : TangibleObject
 {
-    void Start()
-    {
-    }
+	public override Renderer GetRenderer()
+	{
+		GameObject meshHolder = transform.FindChild ("Cardboard").gameObject;
+		return meshHolder.GetComponent<Renderer> ();
+	}
 
     public override void OnDeselect()
     {
-        throw new NotImplementedException();
-    }
+		SetEmission (new Color (0, 0, 0));
+	}
 
     public override void OnGrab()
     {
@@ -25,6 +27,6 @@ public class Box : TangibleObject
 
     public override void OnSelect()
     {
-        throw new NotImplementedException();
-    }
+		SetEmission (new Color (100, 100, 100));
+	}
 }

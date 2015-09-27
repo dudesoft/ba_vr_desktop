@@ -9,9 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 478188}
   - 33: {fileID: 3357594}
-  - 65: {fileID: 6525830}
   - 23: {fileID: 2378380}
-  - 114: {fileID: 11406312}
+  - 65: {fileID: 6525830}
   - 54: {fileID: 5417434}
   - 108: {fileID: 10897260}
   - 111: {fileID: 11150744}
@@ -299,7 +298,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.1229992, y: 0, z: 9}
+  m_LocalPosition: {x: -5.26999998, y: 0, z: 8.06000042}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 454328}
@@ -587,20 +586,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &11406312
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0cd0661cb466f24faa1437be2ffab2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectDistance: 15
-  gestureTime: 2
-  instructionHolder: {fileID: 123998}
 --- !u!114 &11406322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -675,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb73bed3fe783b44bb5dd80ba738526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tangibleType: 1
+  tangibleType: 0
 --- !u!212 &21202322
 SpriteRenderer:
   m_ObjectHideFlags: 1

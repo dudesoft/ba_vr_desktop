@@ -4,8 +4,8 @@ using System;
 
 abstract public class TangibleObject : MonoBehaviour
 {
-	public bool selectable;
-	public bool tangible;
+	public bool selectable = true;
+	public bool tangible = true;
 	private bool selected;
 	private bool grabbed;
 	private string description;
@@ -21,6 +21,8 @@ abstract public class TangibleObject : MonoBehaviour
 
 	abstract public void OnRelease ();
 
+	abstract public Renderer GetRenderer();
+
 	void Awake ()
 	{
 		// start the event listener
@@ -30,7 +32,7 @@ abstract public class TangibleObject : MonoBehaviour
 
 	void Start ()
 	{
-		objectRenderer = GetComponent<Renderer> ();
+		objectRenderer = GetRenderer();
 	}
 
 	// react to events

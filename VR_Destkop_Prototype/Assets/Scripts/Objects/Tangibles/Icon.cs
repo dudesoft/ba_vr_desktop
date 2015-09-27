@@ -4,25 +4,30 @@ using System;
 
 public class Icon : TangibleObject
 {
-    public override void OnDeselect()
-    {
-        throw new NotImplementedException();
-    }
+	public override Renderer GetRenderer()
+	{
+		return GetComponent<Renderer> ();
+	}
 
-    public override void OnGrab()
-    {
-        throw new NotImplementedException();
-    }
+	public override void OnDeselect ()
+	{
+		SetEmission (new Color (0, 0, 0));
+	}
 
-    public override void OnRelease()
-    {
-        throw new NotImplementedException();
-    }
+	public override void OnGrab ()
+	{
+		throw new NotImplementedException ();
+	}
 
-    public override void OnSelect()
-    {
-		SetEmission(new Color(100,100,100));
-    }
+	public override void OnRelease ()
+	{
+		throw new NotImplementedException ();
+	}
+
+	public override void OnSelect ()
+	{
+		SetEmission (new Color (100, 100, 100));
+	}
 }
 
 
