@@ -12,21 +12,19 @@ public class Box : TangibleObject
 
     public override void OnDeselect()
     {
-		SetEmission (new Color (0, 0, 0));
+		SetEmission (Color.black);
 	}
 
     public override void OnGrab()
     {
-        throw new NotImplementedException();
     }
 
     public override void OnRelease()
     {
-        throw new NotImplementedException();
     }
 
     public override void OnSelect()
     {
-		SetEmission (new Color (100, 100, 100));
+		SetEmission (ApplicationConstants.HIGHLIGHTED);
 	}
 }

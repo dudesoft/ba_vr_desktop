@@ -6,9 +6,16 @@ abstract public class TangibleObject : MonoBehaviour
 {
 	public bool selectable = true;
 	public bool tangible = true;
+
+	public PoseManager poseManager;
+	public MyoMapper myoMapper;
+
 	private bool selected;
 	private bool grabbed;
 	private string description;
+
+	// Distance to origin
+	private float objectDistance;
 
 	// Components
 	private Renderer objectRenderer;
@@ -21,18 +28,50 @@ abstract public class TangibleObject : MonoBehaviour
 
 	abstract public void OnRelease ();
 
-	abstract public Renderer GetRenderer();
+	abstract public Renderer GetRenderer ();
 
 	void Awake ()
 	{
-		// start the event listener
+		// Start the event listener
 		SelectionManager.GetInstance ().OnSelect += TriggerSelected;
 		SelectionManager.GetInstance ().OnDeselect += TriggerDeselected;
 	}
 
 	void Start ()
 	{
-		objectRenderer = GetRenderer();
+		poseManager = PoseManager.GetInstance ();
+		myoMapper = MyoMapper.GetInstance ();
+		objectRenderer = GetRenderer ();
+		objectDistance = ApplicationConstants.DEFAULT_OBJECT_DISTANCE;
+	}
+
+	void Update ()
+	{
+		if (selected) {
+			CheckGrabbed ();
+		}
+
+		SetLocationAndRotation();
+	}
+
+	void SetLocationAndRotation ()
+	{
+		transform.position = (transform.position - Camera.main.transform.position).normalized * 
+			objectDistance + Camera.main.transform.position;
+		transform.LookAt(Camera.main.transform);
+	}
+
+	void CheckGrabbed ()
+	{
+		if (!grabbed && poseManager.GetCurrentPose() == myoMapper.handMapping.fist) {
+			SetGrabbed (true);
+		} else if (grabbed && poseManager.GetCurrentPose() != myoMapper.handMapping.fist) {
+			SetGrabbed (false);
+		}
+
+		if (grabbed) {
+			transform.position = CursorController.GetCursorPosition();
+		}
 	}
 
 	// react to events
