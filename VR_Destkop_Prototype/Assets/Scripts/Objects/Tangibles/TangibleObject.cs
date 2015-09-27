@@ -85,7 +85,7 @@ abstract public class TangibleObject : MonoBehaviour
 			return;
 		}
 		Color color = objectRenderer.material.color;
-		color = new Color (color.r, color.g, color.b, value);         // Just set the alpha value of the color
+		color = new Color (color.r, color.g, color.b, value);	// Just set the alpha value of the color
 	}
 
 	public void SetEmission (Color value)

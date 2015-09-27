@@ -21,7 +21,7 @@ public class Icon : TangibleObject
 
     public override void OnSelect()
     {
-        throw new NotImplementedException();
+		SetEmission(new Color(100,100,100));
     }
 }
 

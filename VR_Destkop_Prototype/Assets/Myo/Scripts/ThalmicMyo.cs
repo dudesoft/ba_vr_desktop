@@ -12,6 +12,13 @@ using UnlockType = Thalmic.Myo.UnlockType;
 // coordinate system conventions (the y axis is up, the z axis is forward, and the coordinate system is left-handed).
 public class ThalmicMyo : MonoBehaviour {
 
+	// Events to notify if user syncs/unsyncs or changes his arm
+	public delegate void ArmChangedEvent(Arm arm);
+	public delegate void SyncedChangedEvent(bool synced);
+
+	public event SyncedChangedEvent OnSyncedChanged;
+	public event ArmChangedEvent OnArmChanged;
+
     // True if and only if Myo has detected that it is on an arm.
     public bool armSynced;
 
@@ -69,6 +76,12 @@ public class ThalmicMyo : MonoBehaviour {
 
     void Update() {
         lock (_lock) {
+			if (arm != _myoArm) {
+				OnArmChanged(_myoArm);
+			}
+			if (armSynced != _myoArmSynced) {
+				OnSyncedChanged(_myoArmSynced);
+			}
             armSynced = _myoArmSynced;
             arm = _myoArm;
             xDirection = _myoXDirection;

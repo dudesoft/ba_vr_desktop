@@ -245,6 +245,15 @@ MonoBehaviour:
     spread: 4
     doubleTap: 5
     cursorModel: {fileID: 127458, guid: 5610557ae6b37464b8e84da302f269e9, type: 2}
+  handMapping:
+    waveLeftIcon: {fileID: 0}
+    waveRightIcon: {fileID: 0}
+    waveLeft: 0
+    waveRight: 0
+    fist: 0
+    spread: 0
+    doubleTap: 0
+    cursorModel: {fileID: 0}
 --- !u!114 &470915741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,9 +479,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1296964262}
+  - 114: {fileID: 1296964263}
   m_Layer: 0
   m_Name: Arm Reference
-  m_TagString: Untagged
+  m_TagString: ArmReference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -489,6 +499,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1296964263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1296964261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f0db917058f44a1a0e3ceab2468764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1832165722
 GameObject:
   m_ObjectHideFlags: 0

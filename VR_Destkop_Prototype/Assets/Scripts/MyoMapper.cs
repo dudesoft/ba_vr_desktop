@@ -6,9 +6,15 @@ using Pose = Thalmic.Myo.Pose;
 public class MyoMapper : MonoBehaviour
 {
 	public GameObject myo;
+	private ThalmicMyo tMyo;
+
 	public MyoMapping leftHand;
 	public MyoMapping rightHand;
+
 	private static MyoMapper instance;
+
+	// Save Myo Mapping
+	public MyoMapping handMapping;
 
 	public static MyoMapper GetInstance ()
 	{
@@ -18,25 +24,45 @@ public class MyoMapper : MonoBehaviour
 		return instance;
 	}
 
-	public MyoMapping GetMyoMapping ()
+	void Awake() 
 	{
-		ThalmicMyo tMyo = myo.GetComponent<ThalmicMyo> ();
-		if (tMyo.arm == Thalmic.Myo.Arm.Right) {
-			Debug.Log ("R");
+		tMyo = myo.GetComponent<ThalmicMyo> ();
+		tMyo.OnArmChanged += HandleOnArmChanged;
+		tMyo.OnSyncedChanged += HandleOnSyncedChanged;
+
+		// Right hand is used as default mapping
+		handMapping = rightHand;
+	}
+
+	void HandleOnSyncedChanged (bool synced)
+	{
+
+	}
+
+	void HandleOnArmChanged (Thalmic.Myo.Arm arm)
+	{
+		handMapping = GetMyoMapping (arm);
+		if (handMapping != null) {
+			SpawnCursor ();
+		}
+	}
+
+	public MyoMapping GetMyoMapping (Thalmic.Myo.Arm arm)
+	{
+		if (arm == Thalmic.Myo.Arm.Right) {
 			return rightHand;
-		} else if (tMyo.arm == Thalmic.Myo.Arm.Left) {
-			Debug.Log ("L");
+		} else if (arm == Thalmic.Myo.Arm.Left) {
 			return leftHand;
 		} else {
 			Debug.Log ("Could not determine which hand the myo is worn on!" +
-				"Using right hand!");
+				"Returning right Hand.");
 			return rightHand;
 		}
 	}
 
 	public void SpawnCursor()
 	{
-		// make sure only one cursor is instantiated at a time
+		// Make sure only one cursor is instantiated at a time
 		GameObject[] cursors = GameObject.FindGameObjectsWithTag (ApplicationConstants.Tags.CURSOR);
 		if (cursors.Length > 0) {
 			foreach(GameObject cursor in cursors) {
@@ -44,7 +70,7 @@ public class MyoMapper : MonoBehaviour
 			}
 		}
 
-		Instantiate<GameObject> (ApplicationConstants.HAND_MAPPING.cursorModel);
+		Instantiate<GameObject> (handMapping.cursorModel);
 	}
 
 	[System.Serializable]

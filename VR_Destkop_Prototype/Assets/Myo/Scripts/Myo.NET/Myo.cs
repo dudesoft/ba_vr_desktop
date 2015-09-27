@@ -177,7 +177,7 @@ namespace Thalmic.Myo
     {
         Right,
         Left,
-        Unknown
+		Unknown
     }
 
     public enum XDirection
