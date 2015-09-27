@@ -956,6 +956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armLength: 0
+  handModel: {fileID: 170088}
 --- !u!114 &11499152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1035,6 +1036,10 @@ Prefab:
       propertyPath: m_TagString
       value: Cursor
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: handModel
+      value: 
+      objectReference: {fileID: 170088}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196236}

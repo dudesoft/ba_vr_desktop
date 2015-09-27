@@ -49,11 +49,13 @@ public class SelectionManager : MonoBehaviour
 			if (selectedObject != null) {
 				return;
 			}
+            CursorController.SetTransparency(0.5f);
 			selectedObject = hit.transform.gameObject;
 			OnSelect (hit.transform.gameObject);
 		} else {
 			if (selectedObject != null) {
-				OnDeselect (selectedObject);
+                CursorController.SetTransparency(1f);
+                OnDeselect(selectedObject);
 				selectedObject = null;
 			}
 		}

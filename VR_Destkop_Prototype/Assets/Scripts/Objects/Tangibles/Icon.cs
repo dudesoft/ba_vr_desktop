@@ -27,5 +27,3 @@ public class Icon : TangibleObject
 		SetEmission (ApplicationConstants.HIGHLIGHTED);
 	}
 }
-
-
