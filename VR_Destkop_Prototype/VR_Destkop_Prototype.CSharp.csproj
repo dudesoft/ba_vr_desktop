@@ -51,11 +51,17 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
@@ -110,6 +116,7 @@
     <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRTrackerBounds.cs" />
     <Compile Include="Assets\Scripts\ApplicationConstants.cs" />
+    <Compile Include="Assets\Scripts\Controller\ArmReferenceController.cs" />
     <Compile Include="Assets\Scripts\Controller\CursorController.cs" />
     <Compile Include="Assets\Scripts\CursorPositionScript.cs" />
     <Compile Include="Assets\Scripts\GestureProgress.cs" />
@@ -119,6 +126,7 @@
     <Compile Include="Assets\Scripts\Manager\SelectionManager.cs" />
     <Compile Include="Assets\Scripts\Manager\TangibleManager.cs" />
     <Compile Include="Assets\Scripts\MethodCaller.cs" />
+    <Compile Include="Assets\Scripts\MyoMapper.cs" />
     <Compile Include="Assets\Scripts\ObjectMarker.cs" />
     <Compile Include="Assets\Scripts\Objects\Tangibles\Box.cs" />
     <Compile Include="Assets\Scripts\Objects\Tangibles\Icon.cs" />
