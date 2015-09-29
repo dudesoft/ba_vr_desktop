@@ -2,23 +2,57 @@
 using System.Collections;
 using System.Collections.Generic;
 
-using Pose = Thalmic.Myo.Pose;
-
 public class GestureIconHolder : MonoBehaviour
 {
     public GameObject[] iconHolder;
 
     private List<GameObject> filledIconHolder;
+    private bool shouldAnimateIn;
+    private float animationTimer = 1;
 
-    void Start()
+    void Update()
     {
-        ShowGestureIcons(new List<ActionHolder> { new ActionHolder(Pose.Fist, "yolo"), new ActionHolder(Pose.Fist, "yolo") });
+        if (animationTimer < 1)
+        {
+            if (shouldAnimateIn)
+            {
+                AnimateIn();
+            }
+            else
+            {
+                AnimateOut();
+            }
+        }
+    }
+
+    private void AnimateIn()
+    {
+        animationTimer += Time.deltaTime * 2;
+        for (int i = 0; i < iconHolder.Length; i++)
+        {
+            iconHolder[i].transform.localScale = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(1, 1, 1), animationTimer);
+        }
+    }
+
+    private void AnimateOut()
+    {
+        animationTimer += Time.deltaTime * 2;
+        for (int i = 0; i < iconHolder.Length; i++)
+        {
+            iconHolder[i].transform.localScale = Vector3.Lerp(new Vector3(1, 1, 1), new Vector3(0, 0, 0), animationTimer);
+        }
+    }
+
+    public void HideGestureIcons()
+    {
+        animationTimer = 0;
+        shouldAnimateIn = false;
     }
 
     public void ShowGestureIcons(List<ActionHolder> actions)
     {
-        MyoMapper myoMapper = MyoMapper.GetInstance();
-        filledIconHolder = new List<GameObject>();
+        ResetAnimation();
+        shouldAnimateIn = true;
 
         // build up the right views for given amount of actions
         switch (actions.Count)
@@ -50,6 +84,17 @@ public class GestureIconHolder : MonoBehaviour
         for (int i = 0; i < filledIconHolder.Count; i++)
         {
             filledIconHolder[i].GetComponent<ActionIconHandler>().SetAction(actions[i]);
+            filledIconHolder[i].SetActive(true);
         }
+    }
+
+    private void ResetAnimation()
+    {
+        for (int i = 0; i < iconHolder.Length; i++)
+        {
+            iconHolder[i].SetActive(false);
+        }
+        animationTimer = 0;
+        filledIconHolder = new List<GameObject>();
     }
 }

@@ -6,7 +6,6 @@ using TangibleType = ApplicationConstants.TangibleType;
 public class TangibleObjectController : MonoBehaviour {
 
     public TangibleType tangibleType;
-    private TangibleObject tangibleObject;
 
     void Start()
     {
@@ -14,10 +13,10 @@ public class TangibleObjectController : MonoBehaviour {
         switch (tangibleType)
         {
             case TangibleType.Icon:
-                tangibleObject = gameObject.AddComponent<Icon>();
+                gameObject.AddComponent<Icon>();
                 break;
             case TangibleType.Box:
-                tangibleObject = gameObject.AddComponent<Box>();
+                gameObject.AddComponent<Box>();
                 break;
         }
     }

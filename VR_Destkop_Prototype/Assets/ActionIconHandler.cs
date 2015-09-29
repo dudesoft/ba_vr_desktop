@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-
-using Pose = Thalmic.Myo.Pose;
 
 public class ActionIconHandler : MonoBehaviour {
 

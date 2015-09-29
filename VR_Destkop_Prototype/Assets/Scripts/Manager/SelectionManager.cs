@@ -8,13 +8,11 @@ public class SelectionManager : MonoBehaviour
 	private Transform armTransform;
 
 	// rotation-offset from myo transform
-	private Quaternion antiYaw = Quaternion.identity;
 	private Vector3 myoDirection;
 
 	// remember last selected object
 	private GameObject selectedObject;
 	private RaycastHit hit;
-	private PoseManager poseManager;
 
 	// event handler for selection
 	public delegate void OnSelectEvent (GameObject g);
@@ -27,14 +25,13 @@ public class SelectionManager : MonoBehaviour
 	public static SelectionManager GetInstance ()
 	{
 		if (!instance) {
-			instance = (SelectionManager)GameObject.FindObjectOfType (typeof(SelectionManager));
+			instance = (SelectionManager)FindObjectOfType (typeof(SelectionManager));
 		}
 		return instance;
 	}
 
 	void Start ()
 	{
-		poseManager = PoseManager.GetInstance ();
 		armTransform = armReference.transform;
 	}
 

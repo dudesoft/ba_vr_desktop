@@ -50,11 +50,6 @@ public class Box : TangibleObject
         animator.SetBool("IsOpen", false);
     }
 
-    public override void OnDeselect()
-    {
-        SetEmission(Color.black);
-    }
-
     public override void OnGrab()
     {
         GetComponent<Collider>().isTrigger = false;
@@ -68,5 +63,12 @@ public class Box : TangibleObject
     public override void OnSelect()
     {
         SetEmission(ApplicationConstants.HIGHLIGHTED);
+        ShowActionIcons(new System.Collections.Generic.List<ActionHolder> { new ActionHolder(Thalmic.Myo.Pose.Fist, "JOW FIST") });
+    }
+
+    public override void OnDeselect()
+    {
+        SetEmission(Color.black);
+        HideActionIcons();
     }
 }

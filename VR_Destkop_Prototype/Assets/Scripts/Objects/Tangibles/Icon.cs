@@ -4,7 +4,6 @@ using System;
 
 public class Icon : TangibleObject
 {
-
     public override void Start()
     {
         canContainObjects = false;

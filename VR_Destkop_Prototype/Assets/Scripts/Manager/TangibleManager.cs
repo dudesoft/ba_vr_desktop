@@ -13,7 +13,7 @@ public class TangibleManager : MonoBehaviour
     {
         if (!instance)
         {
-            instance = (TangibleManager)GameObject.FindObjectOfType(typeof(TangibleManager));
+            instance = (TangibleManager)FindObjectOfType(typeof(TangibleManager));
         }
         return instance;
     }

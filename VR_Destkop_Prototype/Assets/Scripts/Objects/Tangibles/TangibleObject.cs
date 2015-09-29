@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 abstract public class TangibleObject : MonoBehaviour
@@ -22,6 +23,7 @@ abstract public class TangibleObject : MonoBehaviour
 
     // Components
     private Renderer objectRenderer;
+    private GestureIconHolder iconHolder;
 
     abstract public void OnSelect();
     abstract public void OnDeselect();
@@ -42,6 +44,7 @@ abstract public class TangibleObject : MonoBehaviour
         myoMapper = MyoMapper.GetInstance();
         objectRenderer = GetRenderer();
         objectDistance = ApplicationConstants.DEFAULT_OBJECT_DISTANCE;
+        iconHolder = GetComponentInChildren<GestureIconHolder>();
 
         if (canContainObjects)
         {
@@ -55,8 +58,17 @@ abstract public class TangibleObject : MonoBehaviour
         {
             CheckGrabbed();
         }
-
         SetLocationAndRotation();
+    }
+
+    public void ShowActionIcons(List<ActionHolder> actions)
+    {
+        iconHolder.ShowGestureIcons(actions);
+    }
+
+    public void HideActionIcons()
+    {
+        iconHolder.HideGestureIcons();
     }
 
     void SetLocationAndRotation()

@@ -114,7 +114,6 @@
     <Compile Include="Assets\Scripts\Controller\ArmReferenceController.cs" />
     <Compile Include="Assets\Scripts\Controller\CursorController.cs" />
     <Compile Include="Assets\Scripts\GestureProgress.cs" />
-    <Compile Include="Assets\Scripts\IconController.cs" />
     <Compile Include="Assets\Scripts\Manager\MyoMapper.cs" />
     <Compile Include="Assets\Scripts\Manager\PoseManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SelectionManager.cs" />
