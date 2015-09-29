@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
+
 using Pose = Thalmic.Myo.Pose;
 
 public class MyoMapper : MonoBehaviour
@@ -15,6 +17,7 @@ public class MyoMapper : MonoBehaviour
 
     // Save Myo Mapping
     public MyoMapping handMapping;
+    public Dictionary<Pose, Sprite> spriteMapping;
 
     public static MyoMapper GetInstance()
     {
@@ -33,6 +36,7 @@ public class MyoMapper : MonoBehaviour
 
         // Right hand is used as default mapping
         handMapping = rightHand;
+        buildSpriteMapping();
     }
 
     void HandleOnSyncedChanged(bool synced)
@@ -46,7 +50,18 @@ public class MyoMapper : MonoBehaviour
         if (handMapping != null)
         {
             SpawnCursor();
+            buildSpriteMapping();
         }
+    }
+
+    private void buildSpriteMapping()
+    {
+        spriteMapping = new Dictionary<Pose, Sprite>();
+        spriteMapping.Add(handMapping.fist, handMapping.fistIcon);
+        spriteMapping.Add(handMapping.doubleTap, handMapping.doubleTapIcon);
+        spriteMapping.Add(handMapping.waveLeft, handMapping.waveLeftIcon);
+        spriteMapping.Add(handMapping.waveRight, handMapping.waveRightIcon);
+        spriteMapping.Add(handMapping.spread, handMapping.spreadIcon);
     }
 
     public MyoMapping GetMyoMapping(Thalmic.Myo.Arm arm)
@@ -78,7 +93,7 @@ public class MyoMapper : MonoBehaviour
                 Destroy(cursor);
             }
         }
-        Instantiate<GameObject>(handMapping.cursorModel);
+        Instantiate(handMapping.cursorModel);
     }
 
     [System.Serializable]

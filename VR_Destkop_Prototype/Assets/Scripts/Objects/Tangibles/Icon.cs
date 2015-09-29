@@ -4,10 +4,18 @@ using System;
 
 public class Icon : TangibleObject
 {
-	public override Renderer GetRenderer()
+
+    public override void Start()
+    {
+        canContainObjects = false;
+        base.Start();
+    }
+
+    public override Renderer GetRenderer()
 	{
-		return GetComponent<Renderer> ();
-	}
+        GameObject meshHolder = transform.FindChild("MeshHolder").gameObject;
+        return meshHolder.GetComponent<Renderer>();
+    }
 
 	public override void OnDeselect ()
 	{
@@ -18,12 +26,13 @@ public class Icon : TangibleObject
 	{
 	}
 
-	public override void OnRelease ()
-	{
-	}
-
 	public override void OnSelect ()
 	{
 		SetEmission (ApplicationConstants.HIGHLIGHTED);
 	}
+
+    public override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+    }
 }

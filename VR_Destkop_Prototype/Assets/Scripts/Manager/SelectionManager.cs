@@ -60,4 +60,9 @@ public class SelectionManager : MonoBehaviour
 			}
 		}
 	}
+
+    public void ResetSelectedObject()
+    {
+        selectedObject = null;
+    }
 }
