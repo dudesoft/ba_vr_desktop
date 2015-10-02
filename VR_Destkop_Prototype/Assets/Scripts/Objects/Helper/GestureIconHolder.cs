@@ -9,6 +9,7 @@ public class GestureIconHolder : MonoBehaviour
     private List<GameObject> filledIconHolder;
     private bool shouldAnimateIn;
     private float animationTimer = 1;
+    private Vector3 lastScale;
 
     void Update()
     {
@@ -30,7 +31,7 @@ public class GestureIconHolder : MonoBehaviour
         animationTimer += Time.deltaTime * 2;
         for (int i = 0; i < iconHolder.Length; i++)
         {
-            iconHolder[i].transform.localScale = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(1, 1, 1), animationTimer);
+            iconHolder[i].transform.localScale = Vector3.Lerp(lastScale, new Vector3(1, 1, 1), animationTimer);
         }
     }
 
@@ -39,18 +40,20 @@ public class GestureIconHolder : MonoBehaviour
         animationTimer += Time.deltaTime * 2;
         for (int i = 0; i < iconHolder.Length; i++)
         {
-            iconHolder[i].transform.localScale = Vector3.Lerp(new Vector3(1, 1, 1), new Vector3(0, 0, 0), animationTimer);
+            iconHolder[i].transform.localScale = Vector3.Lerp(lastScale, new Vector3(0, 0, 0), animationTimer);
         }
     }
 
     public void HideGestureIcons()
     {
+        lastScale = iconHolder[0].transform.localScale;
         animationTimer = 0;
         shouldAnimateIn = false;
     }
 
     public void ShowGestureIcons(List<ActionHolder> actions)
     {
+        lastScale = iconHolder[0].transform.localScale;
         ResetAnimation();
         shouldAnimateIn = true;
 

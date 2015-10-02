@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
 
 public class Icon : TangibleObject
 {
@@ -19,16 +17,24 @@ public class Icon : TangibleObject
 	public override void OnDeselect ()
 	{
 		SetEmission (Color.black);
-	}
+        HideActionIcons();
+    }
 
 	public override void OnGrab ()
 	{
-	}
+        ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.MOVE_ICON));
+    }
 
-	public override void OnSelect ()
+    public override void OnRelease()
+    {
+        ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.BASIC_ICON));
+    }
+
+    public override void OnSelect ()
 	{
 		SetEmission (ApplicationConstants.HIGHLIGHTED);
-	}
+        ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.BASIC_ICON));
+    }
 
     public override void OnTriggerEnter(Collider other)
     {

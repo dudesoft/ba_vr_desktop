@@ -9,6 +9,7 @@ public class CursorController : MonoBehaviour
     private Quaternion antiYaw;
     private MyoMapper myoMapper;
     private Animator animator;
+    private static Color color;
 
     private static Renderer handRenderer;
     private static Transform self;
@@ -27,6 +28,7 @@ public class CursorController : MonoBehaviour
 
         handRenderer = handModel.GetComponent<Renderer>();
         animator = GetComponent<Animator>();
+        color = handRenderer.material.color;
     }
 
     void Update()
@@ -44,6 +46,12 @@ public class CursorController : MonoBehaviour
         else
         {
             animator.SetBool("IsClosed", false);
+        }
+
+        // Handle transparency
+        foreach (Material material in handRenderer.materials)
+        {
+            material.color = Color.Lerp(material.color, color, 0.05f);
         }
     }
 
@@ -64,9 +72,7 @@ public class CursorController : MonoBehaviour
 
     public static void SetTransparency(float transparency)
     {
-        foreach (Material material in handRenderer.materials)
-        {
-            material.color = new Color(material.color.r, material.color.g, material.color.b, transparency);
-        }
+        Material material = handRenderer.material;
+        color = new Color(material.color.r, material.color.g, material.color.b, transparency);
     }
 }

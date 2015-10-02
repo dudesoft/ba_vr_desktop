@@ -10,6 +10,9 @@ public class MyoMapper : MonoBehaviour
     public GameObject myo;
     private ThalmicMyo tMyo;
 
+    public Sprite moveIcon;
+    public Sprite rotateIcon;
+
     public MyoMapping leftHand;
     public MyoMapping rightHand;
 
@@ -23,7 +26,7 @@ public class MyoMapper : MonoBehaviour
     {
         if (!instance)
         {
-            instance = (MyoMapper)GameObject.FindObjectOfType(typeof(MyoMapper));
+            instance = (MyoMapper)FindObjectOfType(typeof(MyoMapper));
         }
         return instance;
     }
@@ -54,6 +57,7 @@ public class MyoMapper : MonoBehaviour
         }
     }
 
+    // Map poses to icons
     private void buildSpriteMapping()
     {
         spriteMapping = new Dictionary<Pose, Sprite>();
@@ -62,6 +66,8 @@ public class MyoMapper : MonoBehaviour
         spriteMapping.Add(handMapping.waveLeft, handMapping.waveLeftIcon);
         spriteMapping.Add(handMapping.waveRight, handMapping.waveRightIcon);
         spriteMapping.Add(handMapping.spread, handMapping.spreadIcon);
+        spriteMapping.Add(handMapping.move, moveIcon);
+        spriteMapping.Add(handMapping.rotate, rotateIcon);
     }
 
     public MyoMapping GetMyoMapping(Thalmic.Myo.Arm arm)
@@ -76,7 +82,7 @@ public class MyoMapper : MonoBehaviour
         }
         else
         {
-            Debug.Log("Could not determine which hand the myo is worn on! " +
+            Debug.Log("Could not determine on which arm the myo is worn! " +
                 "Returning right hand.");
             return rightHand;
         }
@@ -109,6 +115,8 @@ public class MyoMapper : MonoBehaviour
         public Pose fist;
         public Pose spread;
         public Pose doubleTap;
+        public Pose move = Pose.Move;
+        public Pose rotate = Pose.Rotate;
         public GameObject cursorModel;
     }
 }

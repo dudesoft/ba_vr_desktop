@@ -52,18 +52,20 @@ public class Box : TangibleObject
 
     public override void OnGrab()
     {
+        ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.MOVE_ICON));
         GetComponent<Collider>().isTrigger = false;
     }
 
     public override void OnRelease()
     {
         GetComponent<Collider>().isTrigger = true;
+        ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.BASIC_BOX));
     }
 
     public override void OnSelect()
     {
         SetEmission(ApplicationConstants.HIGHLIGHTED);
-        ShowActionIcons(new System.Collections.Generic.List<ActionHolder> { new ActionHolder(Thalmic.Myo.Pose.Fist, "JOW FIST") });
+        ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.BASIC_BOX));
     }
 
     public override void OnDeselect()

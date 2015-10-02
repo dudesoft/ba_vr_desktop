@@ -13,6 +13,8 @@ namespace Thalmic.Myo
         WaveOut = libmyo.PoseType.WaveOut,
         FingersSpread = libmyo.PoseType.FingersSpread,
         DoubleTap = libmyo.PoseType.DoubleTap,
-        Unknown = libmyo.PoseType.Unknown
+        Unknown = libmyo.PoseType.Unknown,
+        Move,
+        Rotate
     }
 }

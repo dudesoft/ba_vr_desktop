@@ -339,7 +339,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 475166}
   - 137: {fileID: 13744366}
-  - 114: {fileID: 11499152}
   m_Layer: 2
   m_Name: Hand Model
   m_TagString: Untagged
@@ -957,17 +956,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armLength: 0
   handModel: {fileID: 170088}
---- !u!114 &11499152
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 240144ac82f777240be488d4350d68ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!137 &13744366
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
