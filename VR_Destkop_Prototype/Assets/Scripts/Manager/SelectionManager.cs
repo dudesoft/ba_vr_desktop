@@ -1,62 +1,96 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
+﻿using System;
+using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
 {
-	public GameObject armReference;
-	private Transform armTransform;
+    public GameObject armReference;
+    private Transform viewReference;
+    private Transform armTransform;
 
-	// rotation-offset from myo transform
-	private Vector3 myoDirection;
+    // Rotation-offset from myo transform
+    private Vector3 myoDirection;
 
-	// remember last selected object
-	private GameObject selectedObject;
-	private RaycastHit hit;
+    // Remember last selected object
+    private GameObject selectedObject;
+    private GameObject lookedAtObject;
+    private RaycastHit hit;
 
-	// event handler for selection
-	public delegate void OnSelectEvent (GameObject g);
+    // Event handler for selection
+    public delegate void OnSelectEvent(GameObject g);
+    public event OnSelectEvent OnSelect;
+    public event OnSelectEvent OnDeselect;
 
-	public event OnSelectEvent OnSelect;
-	public event OnSelectEvent OnDeselect;
+    // Event handler for look-direction
+    public delegate void OnViewEvent(GameObject g);
+    public event OnViewEvent OnStartLookingAt;
+    public event OnViewEvent OnStopLookingAt;
 
-	private static SelectionManager instance;
-	
-	public static SelectionManager GetInstance ()
-	{
-		if (!instance) {
-			instance = (SelectionManager)FindObjectOfType (typeof(SelectionManager));
-		}
-		return instance;
-	}
+    private static SelectionManager instance;
 
-	void Start ()
-	{
-		armTransform = armReference.transform;
-	}
+    public static SelectionManager GetInstance()
+    {
+        if (!instance)
+        {
+            instance = (SelectionManager)FindObjectOfType(typeof(SelectionManager));
+        }
+        return instance;
+    }
 
-	void Update ()
-	{
-		HandleSelection ();
-	}
+    void Start()
+    {
+        viewReference = Camera.main.transform;
+        armTransform = armReference.transform;
+    }
 
-	private void HandleSelection ()
-	{
-		if (Physics.Raycast (armTransform.position, armTransform.forward, out hit)) {
-			if (selectedObject != null) {
-				return;
-			}
+    void Update()
+    {
+        HandleSelection();
+        HandleView();
+    }
+
+    private void HandleView()
+    {
+        if (Physics.Raycast(armTransform.position, armTransform.forward, out hit))
+        {
+            if (selectedObject != null)
+            {
+                return;
+            }
             CursorController.SetTransparency(0.5f);
-			selectedObject = hit.transform.gameObject;
-			OnSelect (hit.transform.gameObject);
-		} else {
-			if (selectedObject != null) {
+            selectedObject = hit.transform.gameObject;
+            OnSelect(hit.transform.gameObject);
+        }
+        else
+        {
+            if (selectedObject != null)
+            {
                 CursorController.SetTransparency(1f);
                 OnDeselect(selectedObject);
-				selectedObject = null;
-			}
-		}
-	}
+                selectedObject = null;
+            }
+        }
+    }
+
+    private void HandleSelection()
+    {
+        if (Physics.Raycast(viewReference.position, viewReference.forward, out hit))
+        {
+            if (lookedAtObject != null)
+            {
+                return;
+            }
+            lookedAtObject = hit.transform.gameObject;
+            OnStartLookingAt(hit.transform.gameObject);
+        }
+        else
+        {
+            if (lookedAtObject != null)
+            {
+                OnStopLookingAt(lookedAtObject);
+                lookedAtObject = null;
+            }
+        }
+    }
 
     public void ResetSelectedObject()
     {
