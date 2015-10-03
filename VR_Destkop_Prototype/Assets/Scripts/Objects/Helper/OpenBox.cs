@@ -1,37 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-using Pose = Thalmic.Myo.Pose;
-
-
-
-public class OpenBox : MonoBehaviour {
-
-    GameObject myo;
-    ThalmicMyo tMyo;
+public class OpenBox : MonoBehaviour
+{
+    public GameObject grid;
+    private Animation gridAnimation;
 
     void Start()
     {
-        myo = GameObject.Find("Myo");
-        tMyo = myo.GetComponent<ThalmicMyo>();
+        gridAnimation = grid.GetComponent<Animation>();
     }
 
-    void OnTriggerEnter(Collider other)
+    public void ShowGrid()
     {
-        GetComponent<Animator>().SetBool("IsOpen", true);
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        GetComponent<Animator>().SetBool("IsOpen", false);
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        if(tMyo.pose != Pose.Fist)
-        {
-            Destroy(other.gameObject);
-            GetComponent<Animator>().SetBool("IsOpen", false);
-        }
+        gridAnimation.Play();
     }
 }
