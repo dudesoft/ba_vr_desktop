@@ -1,16 +1,30 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
 
 public class Box : TangibleObject
 {
     private Animator animator;
+    private OpenBox openBox;
 
     public override void Start()
     {
         canContainObjects = true;
         base.Start();
         animator = GetComponent<Animator>();
+        openBox = GetComponent<OpenBox>();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (poseManager.GetCurrentPose() == Thalmic.Myo.Pose.WaveIn)
+        {
+            openBox.ShowGrid();
+        }
+
+        if (poseManager.GetCurrentPose() == Thalmic.Myo.Pose.WaveOut)
+        {
+            openBox.HideGrid();
+        }
     }
 
     public override Renderer GetRenderer()

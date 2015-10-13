@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System;
 
 abstract public class TangibleObject : MonoBehaviour
 {
@@ -52,7 +50,7 @@ abstract public class TangibleObject : MonoBehaviour
         }
     }
 
-    void Update()
+    public virtual void Update()
     {
         if (selected)
         {

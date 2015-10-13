@@ -12,6 +12,12 @@ public class OpenBox : MonoBehaviour
 
     public void ShowGrid()
     {
-        gridAnimation.Play();
+        grid.SetActive(true);
+        gridAnimation.Play("ShowGrid");
+    }
+
+    public void HideGrid()
+    {
+        gridAnimation.Play("HideGrid");
     }
 }

@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GridController.cs" />
     <Compile Include="Assets\GridFieldController.cs" />
     <Compile Include="Assets\Myo Samples\Scripts\ColorBoxByPose.cs" />
     <Compile Include="Assets\Myo Samples\Scripts\JointOrientation.cs" />
