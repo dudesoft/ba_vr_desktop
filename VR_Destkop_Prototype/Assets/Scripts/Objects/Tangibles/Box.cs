@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Box : TangibleObject
 {
     private Animator animator;
     private OpenBox openBox;
+    private bool isOpen;
 
     public override void Start()
     {
@@ -16,14 +18,23 @@ public class Box : TangibleObject
     public override void Update()
     {
         base.Update();
-        if (poseManager.GetCurrentPose() == Thalmic.Myo.Pose.WaveIn)
+        CheckOpenGesture();
+    }
+
+    private void CheckOpenGesture()
+    {
+        if (poseManager.GetCurrentPose() == myoMapper.handMapping.waveLeft && !isOpen)
         {
+            isOpen = true;
             openBox.ShowGrid();
+            animator.SetBool("IsOpen", true);
         }
 
-        if (poseManager.GetCurrentPose() == Thalmic.Myo.Pose.WaveOut)
+        if (poseManager.GetCurrentPose() == myoMapper.handMapping.waveRight && isOpen)
         {
+            isOpen = false;
             openBox.HideGrid();
+            animator.SetBool("IsOpen", false);
         }
     }
 
@@ -56,6 +67,11 @@ public class Box : TangibleObject
         {
             GetComponent<Collider>().isTrigger = true;
         }
+    }
+
+    public void SpawnIcons()
+    {
+
     }
 
     public override void OnTriggerExit(Collider other)
