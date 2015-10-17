@@ -5,9 +5,13 @@ public class ActionHolder
     public Pose action { get; set; }
     public string description { get; set; }
 
-    public ActionHolder(Pose action, string description)
+	// Is a critical action performed, p.e. deleting an object?
+	public bool critical { get; set; }
+
+    public ActionHolder(Pose action, string description, bool critical = false)
     {
         this.action = action;
         this.description = description;
+		this.critical = critical;
     }
 }

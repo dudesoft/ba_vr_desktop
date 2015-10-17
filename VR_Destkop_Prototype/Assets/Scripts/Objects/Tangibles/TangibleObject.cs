@@ -5,16 +5,23 @@ abstract public class TangibleObject : MonoBehaviour
 {
     public bool selectable = true;
     public bool tangible = true;
+	public bool deletable = true;
 
+	public bool blockGesture;
     public bool canContainObjects = false;
     public GameObject hoveringOverContainer;
 
     public PoseManager poseManager;
     public MyoMapper myoMapper;
+	public EventManager eventManager;
 
     public bool selected;
     public bool grabbed;
     private string description;
+
+	// Provide a counter for Tangibles
+	public bool counterActive;
+	public float counterValue;
 
     // Distance to origin
     private float objectDistance;
@@ -38,6 +45,7 @@ abstract public class TangibleObject : MonoBehaviour
 
     public virtual void Start()
     {
+		eventManager = EventManager.GetInstance ();
         poseManager = PoseManager.GetInstance();
         myoMapper = MyoMapper.GetInstance();
         objectRenderer = GetRenderer();
@@ -50,14 +58,57 @@ abstract public class TangibleObject : MonoBehaviour
         }
     }
 
+	void OnDestroy() 
+	{
+		// unsubscribe from events
+		SelectionManager.GetInstance().OnSelect -= TriggerSelected;
+		SelectionManager.GetInstance().OnDeselect -= TriggerDeselected;
+	}
+
     public virtual void Update()
     {
         if (selected)
         {
             CheckGrabbed();
+			if (deletable) 
+			{
+				CheckDeleteGesture ();
+			}
         }
         SetLocationAndRotation();
+
+		if (counterActive) 
+		{
+			counterValue += Time.deltaTime;
+		} 
+		else 
+		{
+			counterValue = 0;
+		}
     }
+
+	void CheckDeleteGesture ()
+	{
+		if (poseManager.GetCurrentPose () == myoMapper.rest) 
+		{
+			eventManager.SetTheProgress(myoMapper.spriteMapping[myoMapper.handMapping.waveRight], 0);
+			counterActive = false;
+			blockGesture = false;
+		}
+
+		if (poseManager.GetCurrentPose () == myoMapper.handMapping.waveRight && !blockGesture)
+		{
+			counterActive = true;
+			float progress = counterValue / 2;
+			if (progress >= 1) 
+			{
+				eventManager.MoveToTheTrash(this.gameObject);
+				Destroy(this.gameObject);
+				return;
+			}
+			eventManager.SetTheProgress(myoMapper.spriteMapping[myoMapper.handMapping.waveRight], progress);
+		}
+	}
 
     public void ShowActionIcons(List<ActionHolder> actions)
     {

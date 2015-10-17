@@ -22,6 +22,8 @@ public class MyoMapper : MonoBehaviour
     public MyoMapping handMapping;
     public Dictionary<Pose, Sprite> spriteMapping;
 
+	public Pose rest = Thalmic.Myo.Pose.Rest;
+
     public static MyoMapper GetInstance()
     {
         if (!instance)

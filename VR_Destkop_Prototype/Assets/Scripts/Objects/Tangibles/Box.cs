@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 public class Box : TangibleObject
@@ -18,23 +18,33 @@ public class Box : TangibleObject
     public override void Update()
     {
         base.Update();
-        CheckOpenGesture();
+		if (selected) {
+			CheckGestures();
+		}
     }
 
-    private void CheckOpenGesture()
+    private void CheckGestures()
     {
         if (poseManager.GetCurrentPose() == myoMapper.handMapping.waveLeft && !isOpen)
         {
             isOpen = true;
+			deletable = false;
             openBox.ShowGrid();
             animator.SetBool("IsOpen", true);
         }
 
-        if (poseManager.GetCurrentPose() == myoMapper.handMapping.waveRight && isOpen)
+        if (poseManager.GetCurrentPose() == myoMapper.handMapping.waveRight)
         {
-            isOpen = false;
-            openBox.HideGrid();
-            animator.SetBool("IsOpen", false);
+			if (isOpen) 
+			{
+            	isOpen = false;
+				deletable = true;
+            	openBox.HideGrid();
+            	animator.SetBool("IsOpen", false);
+
+				// avoid starting delete process instantly
+				blockGesture = true;
+			}
         }
     }
 
@@ -49,7 +59,8 @@ public class Box : TangibleObject
         base.OnTriggerEnter(other);
         if (!selected && other.gameObject.tag == ApplicationConstants.Tags.TANGIBLE)
         {
-            if (other.gameObject.GetComponent<TangibleObject>().selected)
+			// Trash bin should not be put into Boxes
+            if (other.gameObject.GetComponent<TangibleObject>().selected && other.gameObject.name != "Trash")
             {
                 animator.SetBool("IsOpen", true);
             }

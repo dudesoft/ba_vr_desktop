@@ -38,6 +38,8 @@ public class SelectionManager : MonoBehaviour
 
     void Start()
     {
+		EventManager.GetInstance ().MoveToTrash += RemoveObject;
+
         viewReference = Camera.main.transform;
         armTransform = armReference.transform;
     }
@@ -45,10 +47,19 @@ public class SelectionManager : MonoBehaviour
     void Update()
     {
         HandleSelection();
-        HandleView();
-    }
+	}
 
-    private void HandleView()
+	// Removed Objects must be cleared in Selection Manager to avoid NPE
+	void RemoveObject (GameObject go)
+	{
+		if (go == selectedObject) 
+		{
+			CursorController.SetTransparency(1f);
+			selectedObject = null;
+		}
+	}
+
+    private void HandleSelection()
     {
         if (Physics.Raycast(armTransform.position, armTransform.forward, out hit))
         {
@@ -71,7 +82,7 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    private void HandleSelection()
+    private void HandleView()
     {
         if (Physics.Raycast(viewReference.position, viewReference.forward, out hit))
         {

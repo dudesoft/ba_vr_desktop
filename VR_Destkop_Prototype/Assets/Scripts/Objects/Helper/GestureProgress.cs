@@ -12,7 +12,7 @@ public class GestureProgress : MonoBehaviour
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
-    private void SetGestureProgress(float progress)
+    public void SetGestureProgress(float progress)
     {
         int usedSprite = Mathf.RoundToInt(progressStates.Length * progress) - 1;
         if (usedSprite < 0)

@@ -3,8 +3,8 @@ using System.Collections;
 
 using TangibleType = ApplicationConstants.TangibleType;
 
-public class TangibleObjectController : MonoBehaviour {
-
+public class TangibleObjectController : MonoBehaviour 
+{
     public TangibleType tangibleType;
 
     void Start()
@@ -18,6 +18,9 @@ public class TangibleObjectController : MonoBehaviour {
             case TangibleType.Box:
                 gameObject.AddComponent<Box>();
                 break;
+			case TangibleType.Trash:
+				gameObject.AddComponent<Trash>();
+				break;
         }
     }
 }
