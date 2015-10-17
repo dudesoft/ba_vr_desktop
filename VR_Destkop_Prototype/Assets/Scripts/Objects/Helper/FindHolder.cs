@@ -6,9 +6,12 @@ public class FindHolder : MonoBehaviour {
 	private SpriteRenderer sRenderer;
 	private GestureProgress gProgress;
 
-	void Awake() 
-	{
+	void OnEnable() {
 		EventManager.GetInstance ().SetProgress += FindTheHolder;
+	}
+	
+	void OnDisable() {
+		EventManager.GetInstance ().SetProgress -= FindTheHolder;
 	}
 
 	void Start () {
@@ -21,9 +24,5 @@ public class FindHolder : MonoBehaviour {
 		{
 			gProgress.SetGestureProgress(progress);
 		}
-	}
-
-	void OnDestroy() {
-		EventManager.GetInstance ().SetProgress -= FindTheHolder;
 	}
 }

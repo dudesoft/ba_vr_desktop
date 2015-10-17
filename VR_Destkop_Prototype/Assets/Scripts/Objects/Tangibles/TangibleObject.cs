@@ -36,13 +36,6 @@ abstract public class TangibleObject : MonoBehaviour
 
     abstract public Renderer GetRenderer();
 
-    void Awake()
-    {
-        // Start the event listener
-        SelectionManager.GetInstance().OnSelect += TriggerSelected;
-        SelectionManager.GetInstance().OnDeselect += TriggerDeselected;
-    }
-
     public virtual void Start()
     {
 		eventManager = EventManager.GetInstance ();
@@ -58,9 +51,16 @@ abstract public class TangibleObject : MonoBehaviour
         }
     }
 
-	void OnDestroy() 
+	void OnDisable() 
 	{
-		// unsubscribe from events
+		// Subscribe to events
+		SelectionManager.GetInstance().OnSelect += TriggerSelected;
+		SelectionManager.GetInstance().OnDeselect += TriggerDeselected;
+	}
+
+	void OnDisable() 
+	{
+		// Unsubscribe from events
 		SelectionManager.GetInstance().OnSelect -= TriggerSelected;
 		SelectionManager.GetInstance().OnDeselect -= TriggerDeselected;
 	}
@@ -103,7 +103,7 @@ abstract public class TangibleObject : MonoBehaviour
 			if (progress >= 1) 
 			{
 				eventManager.MoveToTheTrash(this.gameObject);
-				Destroy(this.gameObject);
+				gameObject.SetActive(false);
 				return;
 			}
 			eventManager.SetTheProgress(myoMapper.spriteMapping[myoMapper.handMapping.waveRight], progress);
