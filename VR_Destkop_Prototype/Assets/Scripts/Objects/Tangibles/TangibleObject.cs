@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 abstract public class TangibleObject : MonoBehaviour
 {
@@ -111,10 +112,6 @@ abstract public class TangibleObject : MonoBehaviour
 
     public void ShowActionIcons(List<ActionHolder> actions)
     {
-        if (isStored)
-        {
-            return;
-        }
         iconHolder.ShowGestureIcons(actions);
     }
 
@@ -204,7 +201,10 @@ abstract public class TangibleObject : MonoBehaviour
         }
         if (grabbed)
         {
-            isStored = false;
+            if (isStored)
+            {
+                FreeFromThemShackles();
+            }
             this.grabbed = true;
             OnGrab();
         }
@@ -213,6 +213,14 @@ abstract public class TangibleObject : MonoBehaviour
             this.grabbed = false;
             OnRelease();
         }
+    }
+
+    private void FreeFromThemShackles()
+    {
+        isStored = false;
+        transform.parent = null;
+        hoveringOverContainer.GetComponentInChildren<GridController>().Remove(gameObject);
+        hoveringOverContainer = null;
     }
 
     public virtual void OnRelease()
@@ -227,7 +235,6 @@ abstract public class TangibleObject : MonoBehaviour
         else if (isStored)
         {
             isStored = false;
-            objectDistance = ApplicationConstants.DEFAULT_OBJECT_DISTANCE;
         }
     }
 
@@ -285,13 +292,13 @@ abstract public class TangibleObject : MonoBehaviour
         ObjectStorage storage = container.GetComponent<ObjectStorage>();
         if (storage == null)
         {
-            Debug.Log("Container has no component ObjectStorage!");
+            Debug.Log("Container has no Component ObjectStorage!");
             return;
         }
 
         isStored = true;
-        storage.Store(gameObject);
-        gameObject.SetActive(false);
+        SetSelected(false);
+        container.GetComponentInChildren<GridController>().Store(gameObject);
         // Have to call OnTriggerExit() manually when object inside gets disabled
         container.GetComponent<TangibleObject>().OnTriggerExit(null);
     }

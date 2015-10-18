@@ -4,14 +4,12 @@ using UnityEngine;
 public class Box : TangibleObject
 {
     private Animator animator;
-    private OpenBox openBox;
 
     public override void Start()
     {
         canContainObjects = true;
         base.Start();
         animator = GetComponent<Animator>();
-        openBox = GetComponent<OpenBox>();
     }
 
     public override void Update()
@@ -24,13 +22,13 @@ public class Box : TangibleObject
 
     private void CheckGestures()
     {
-        if (poseManager.GetCurrentPose() == myoMapper.handMapping.waveLeft && !isOpen)
+        if (poseManager.GetCurrentPose() == myoMapper.handMapping.waveLeft && !isOpen && !isStored)
         {
             isOpen = true;
 			deletable = false;
-            openBox.ShowGrid();
             animator.SetBool("IsOpen", true);
-			ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.OPEN_BOX));
+            GetComponentInChildren<GridController>().Open();
+            ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.OPEN_BOX));
         }
 
         if (poseManager.GetCurrentPose() == myoMapper.handMapping.waveRight)
@@ -39,9 +37,9 @@ public class Box : TangibleObject
 			{
             	isOpen = false;
 				deletable = true;
-            	openBox.HideGrid();
             	animator.SetBool("IsOpen", false);
-				ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.BASIC_BOX));
+                GetComponentInChildren<GridController>().Close();
+                ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.BASIC_BOX));
 
 				// avoid starting delete process instantly
 				blockGesture = true;
@@ -84,7 +82,10 @@ public class Box : TangibleObject
     public override void OnTriggerExit(Collider other)
     {
         base.OnTriggerExit(other);
-        animator.SetBool("IsOpen", false);
+        if (!isOpen)
+        {
+            animator.SetBool("IsOpen", false);
+        }
     }
 
     public override void OnGrab()
@@ -103,7 +104,14 @@ public class Box : TangibleObject
     public override void OnSelect()
     {
         SetEmission(ApplicationConstants.HIGHLIGHTED);
-		HandleContainerActionIcons (GestureIconBuilder.ActionHolderType.BASIC_BOX);
+        if (isStored)
+        {
+            HandleContainerActionIcons(GestureIconBuilder.ActionHolderType.STORED_BOX);
+        }
+        else
+        {
+            HandleContainerActionIcons(GestureIconBuilder.ActionHolderType.BASIC_BOX);
+        }
     }
 
     public override void OnDeselect()

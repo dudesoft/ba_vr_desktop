@@ -44,6 +44,15 @@ public class GestureIconHolder : MonoBehaviour
         }
     }
 
+    void OnDisable()
+    {
+        for (int i = 0; i < iconHolder.Length; i++)
+        {
+            iconHolder[i].transform.localScale = Vector3.zero;
+        }
+        shouldAnimateIn = false;
+    }
+
     public void HideGestureIcons()
     {
         lastScale = iconHolder[0].transform.localScale;

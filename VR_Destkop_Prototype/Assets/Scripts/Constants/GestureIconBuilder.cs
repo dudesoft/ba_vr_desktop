@@ -5,7 +5,7 @@ public class GestureIconBuilder
 {
     public enum ActionHolderType
     {
-        BASIC_ICON, MOVE_ICON, BASIC_BOX, OPEN_BOX, TRASH
+        BASIC_ICON, MOVE_ICON, BASIC_BOX, OPEN_BOX, TRASH, STORED_BOX
     }
 
     public static List<ActionHolder> BuildActionHolderSet(ActionHolderType type)
@@ -20,7 +20,10 @@ public class GestureIconBuilder
             case ActionHolderType.BASIC_BOX:
 			return new List<ActionHolder> { new ActionHolder(mapping.handMapping.waveLeft, "Open"),
 				new ActionHolder(mapping.handMapping.fist, "Grab"),new ActionHolder(mapping.handMapping.waveRight, "Delete", true)};
-			case ActionHolderType.OPEN_BOX:
+            case ActionHolderType.STORED_BOX:
+                return new List<ActionHolder> {new ActionHolder(mapping.handMapping.fist, "Grab"),
+                    new ActionHolder(mapping.handMapping.waveRight, "Delete", true)};
+            case ActionHolderType.OPEN_BOX:
 			return new List<ActionHolder> {new ActionHolder(mapping.handMapping.waveRight, "Close"),
 				new ActionHolder(mapping.handMapping.fist, "Grab")};
             case ActionHolderType.MOVE_ICON:

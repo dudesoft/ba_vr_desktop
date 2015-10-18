@@ -3,15 +3,12 @@ using System;
 
 public class Trash : TangibleObject
 {
-	private OpenBox openBox;
-
 	public override void Start()
 	{
 		EventManager.GetInstance ().MoveToTrash += ReceiveObject;
 		deletable = false;
 		canContainObjects = true;
 		base.Start();
-		openBox = GetComponent<OpenBox>();
 	}
 	
 	public override void Update()
@@ -27,14 +24,12 @@ public class Trash : TangibleObject
 		if (poseManager.GetCurrentPose() == myoMapper.handMapping.waveLeft && !isOpen)
 		{
 			isOpen = true;
-			openBox.ShowGrid();
 			ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.OPEN_BOX));
 		}
 		
 		if (poseManager.GetCurrentPose() == myoMapper.handMapping.waveRight && isOpen)
 		{
 			isOpen = false;
-			openBox.HideGrid();
 			ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.TRASH));
 		}
 	}
@@ -72,8 +67,6 @@ public class Trash : TangibleObject
 			Debug.Log ("No Storage attached to Object!");
 			return;
 		}
-
-		storage.Store (go);
 	}
 	
 	public void SpawnIcons()
