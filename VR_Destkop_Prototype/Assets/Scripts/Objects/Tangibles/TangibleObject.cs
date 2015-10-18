@@ -17,6 +17,7 @@ abstract public class TangibleObject : MonoBehaviour
 
     public bool selected;
     public bool grabbed;
+	public bool isStored;
     private string description;
 
 	// Provide a counter for Tangibles
@@ -24,7 +25,7 @@ abstract public class TangibleObject : MonoBehaviour
 	public float counterValue;
 
     // Distance to origin
-    private float objectDistance;
+    public float objectDistance;
 
     // Components
     private Renderer objectRenderer;
@@ -35,6 +36,13 @@ abstract public class TangibleObject : MonoBehaviour
     abstract public void OnGrab();
 
     abstract public Renderer GetRenderer();
+
+	void Awake() 
+	{
+		// Subscribe to events
+		SelectionManager.GetInstance().OnSelect += TriggerSelected;
+		SelectionManager.GetInstance().OnDeselect += TriggerDeselected;
+	}
 
     public virtual void Start()
     {
@@ -50,21 +58,7 @@ abstract public class TangibleObject : MonoBehaviour
             gameObject.AddComponent<ObjectStorage>();
         }
     }
-
-	void OnDisable() 
-	{
-		// Subscribe to events
-		SelectionManager.GetInstance().OnSelect += TriggerSelected;
-		SelectionManager.GetInstance().OnDeselect += TriggerDeselected;
-	}
-
-	void OnDisable() 
-	{
-		// Unsubscribe from events
-		SelectionManager.GetInstance().OnSelect -= TriggerSelected;
-		SelectionManager.GetInstance().OnDeselect -= TriggerDeselected;
-	}
-
+	
     public virtual void Update()
     {
         if (selected)
@@ -75,7 +69,11 @@ abstract public class TangibleObject : MonoBehaviour
 				CheckDeleteGesture ();
 			}
         }
-        SetLocationAndRotation();
+
+		if (!isStored) 
+		{
+			SetLocationAndRotation ();
+		}
 
 		if (counterActive) 
 		{
@@ -114,6 +112,18 @@ abstract public class TangibleObject : MonoBehaviour
     {
         iconHolder.ShowGestureIcons(actions);
     }
+
+	public void HandleContainerActionIcons(bool isOpen, GestureIconBuilder.ActionHolderType defaultAction) 
+	{
+		if (isOpen) 
+		{
+			ShowActionIcons (GestureIconBuilder.BuildActionHolderSet (GestureIconBuilder.ActionHolderType.OPEN_BOX));
+		} 
+		else 
+		{
+			ShowActionIcons (GestureIconBuilder.BuildActionHolderSet (defaultAction));
+		}
+	}
 
     public void HideActionIcons()
     {
@@ -189,6 +199,7 @@ abstract public class TangibleObject : MonoBehaviour
         }
         if (grabbed)
         {
+			isStored = false;
             this.grabbed = true;
             OnGrab();
         }
@@ -207,18 +218,12 @@ abstract public class TangibleObject : MonoBehaviour
             grabbed = false;
             SelectionManager.GetInstance().ResetSelectedObject();
             StoreInto(hoveringOverContainer);
-        }
-    }
-
-    public void SetAlpha(float value)
-    {
-        if (objectRenderer == null)
-        {
-            Debug.Log("No renderer attached to GameObject");
-            return;
-        }
-        Color color = objectRenderer.material.color;
-        color = new Color(color.r, color.g, color.b, value);    // Just set the alpha value of the color
+		} 
+		else if (isStored)
+		{
+			isStored = false;
+			objectDistance = ApplicationConstants.DEFAULT_OBJECT_DISTANCE;
+		}
     }
 
     public void SetEmission(Color value)
@@ -236,6 +241,11 @@ abstract public class TangibleObject : MonoBehaviour
         if (selected)
         {
             TangibleObject otherTangibleObject = other.gameObject.GetComponent<TangibleObject>();
+			if (otherTangibleObject == null) 
+			{
+				return;
+			}
+
             if (otherTangibleObject.canContainObjects == true)
             {
                 hoveringOverContainer = otherTangibleObject.gameObject;
@@ -254,6 +264,10 @@ abstract public class TangibleObject : MonoBehaviour
         if (selected)
         {
             TangibleObject otherTangibleObject = other.gameObject.GetComponent<TangibleObject>();
+			if (otherTangibleObject == null) 
+			{
+				return;
+			}
             if (otherTangibleObject.canContainObjects == true)
             {
                 hoveringOverContainer = null;
@@ -270,6 +284,7 @@ abstract public class TangibleObject : MonoBehaviour
             return;
         }
 
+		isStored = true;
         storage.Store(gameObject);
         gameObject.SetActive(false);
         // Have to call OnTriggerExit() manually when object inside gets disabled

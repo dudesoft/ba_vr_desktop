@@ -92,7 +92,6 @@
      <Compile Include="Assets\Scripts\Controller\CursorController.cs" />
      <Compile Include="Assets\Scripts\Controller\GridController.cs" />
      <Compile Include="Assets\Scripts\Controller\GridFieldController.cs" />
-     <Compile Include="Assets\Scripts\Controller\InstructionController.cs" />
      <Compile Include="Assets\Scripts\Manager\ActionIconHandler.cs" />
      <Compile Include="Assets\Scripts\Manager\EventManager.cs" />
      <Compile Include="Assets\Scripts\Manager\MyoMapper.cs" />

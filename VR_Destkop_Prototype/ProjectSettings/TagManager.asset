@@ -8,6 +8,7 @@ TagManager:
   - Cursor
   - ArmReference
   - IconHolder
+  - ManipulableObject
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Masked Object
+  - Grid Layer
   - 
   - 
   - 

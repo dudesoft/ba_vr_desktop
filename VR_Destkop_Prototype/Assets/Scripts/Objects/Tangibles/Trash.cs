@@ -29,12 +29,14 @@ public class Trash : TangibleObject
 		{
 			isOpen = true;
 			openBox.ShowGrid();
+			ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.OPEN_BOX));
 		}
 		
 		if (poseManager.GetCurrentPose() == myoMapper.handMapping.waveRight && isOpen)
 		{
 			isOpen = false;
 			openBox.HideGrid();
+			ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.TRASH));
 		}
 	}
 	
@@ -94,15 +96,15 @@ public class Trash : TangibleObject
 	public override void OnRelease()
 	{
 		GetComponent<Collider>().isTrigger = true;
-		ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.BASIC_BOX));
+		HandleContainerActionIcons (isOpen, GestureIconBuilder.ActionHolderType.TRASH);
 	}
 	
 	public override void OnSelect()
 	{
 		SetEmission(ApplicationConstants.HIGHLIGHTED);
-		ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.BASIC_BOX));
+		HandleContainerActionIcons (isOpen, GestureIconBuilder.ActionHolderType.TRASH);
 	}
-	
+
 	public override void OnDeselect()
 	{
 		SetEmission(Color.black);

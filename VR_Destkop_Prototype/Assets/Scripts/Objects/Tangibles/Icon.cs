@@ -27,6 +27,7 @@ public class Icon : TangibleObject
 
     public override void OnRelease()
     {
+		base.OnRelease ();
         ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.BASIC_ICON));
     }
 

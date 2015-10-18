@@ -19,12 +19,7 @@ public class SelectionManager : MonoBehaviour
     public delegate void OnSelectEvent(GameObject g);
     public event OnSelectEvent OnSelect;
     public event OnSelectEvent OnDeselect;
-
-    // Event handler for look-direction
-    public delegate void OnViewEvent(GameObject g);
-    public event OnViewEvent OnStartLookingAt;
-    public event OnViewEvent OnStopLookingAt;
-
+	
     private static SelectionManager instance;
 
     public static SelectionManager GetInstance()
@@ -54,7 +49,7 @@ public class SelectionManager : MonoBehaviour
 	{
 		if (go == selectedObject) 
 		{
-			CursorController.SetTransparency(1f);
+			CursorController.SetTransparency(ApplicationConstants.ALPHA_DEFAULT);
 			selectedObject = null;
 		}
 	}
@@ -62,12 +57,12 @@ public class SelectionManager : MonoBehaviour
     private void HandleSelection()
     {
         if (Physics.Raycast(armTransform.position, armTransform.forward, out hit))
-        {
-            if (selectedObject != null)
+		{
+            if (selectedObject != null || hit.transform.tag != ApplicationConstants.Tags.TANGIBLE)
             {
                 return;
             }
-            CursorController.SetTransparency(0.5f);
+            CursorController.SetTransparency(ApplicationConstants.ALPHA_HALF_TRANSPARENT);
             selectedObject = hit.transform.gameObject;
             OnSelect(hit.transform.gameObject);
         }
@@ -75,30 +70,9 @@ public class SelectionManager : MonoBehaviour
         {
             if (selectedObject != null)
             {
-                CursorController.SetTransparency(1f);
+                CursorController.SetTransparency(ApplicationConstants.ALPHA_DEFAULT);
                 OnDeselect(selectedObject);
                 selectedObject = null;
-            }
-        }
-    }
-
-    private void HandleView()
-    {
-        if (Physics.Raycast(viewReference.position, viewReference.forward, out hit))
-        {
-            if (lookedAtObject != null)
-            {
-                return;
-            }
-            lookedAtObject = hit.transform.gameObject;
-            OnStartLookingAt(hit.transform.gameObject);
-        }
-        else
-        {
-            if (lookedAtObject != null)
-            {
-                OnStopLookingAt(lookedAtObject);
-                lookedAtObject = null;
             }
         }
     }

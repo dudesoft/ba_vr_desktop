@@ -6,15 +6,8 @@ public class FindHolder : MonoBehaviour {
 	private SpriteRenderer sRenderer;
 	private GestureProgress gProgress;
 
-	void OnEnable() {
-		EventManager.GetInstance ().SetProgress += FindTheHolder;
-	}
-	
-	void OnDisable() {
-		EventManager.GetInstance ().SetProgress -= FindTheHolder;
-	}
-
 	void Start () {
+		EventManager.GetInstance ().SetProgress += FindTheHolder;
 		sRenderer = GetComponent<SpriteRenderer> ();
 		gProgress = transform.parent.gameObject.GetComponent<GestureProgress> ();
 	}

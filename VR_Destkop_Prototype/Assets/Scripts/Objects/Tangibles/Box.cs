@@ -31,6 +31,7 @@ public class Box : TangibleObject
 			deletable = false;
             openBox.ShowGrid();
             animator.SetBool("IsOpen", true);
+			ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.OPEN_BOX));
         }
 
         if (poseManager.GetCurrentPose() == myoMapper.handMapping.waveRight)
@@ -41,6 +42,7 @@ public class Box : TangibleObject
 				deletable = true;
             	openBox.HideGrid();
             	animator.SetBool("IsOpen", false);
+				ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.BASIC_BOX));
 
 				// avoid starting delete process instantly
 				blockGesture = true;
@@ -99,14 +101,15 @@ public class Box : TangibleObject
 
     public override void OnRelease()
     {
+		base.OnRelease ();
         GetComponent<Collider>().isTrigger = true;
-        ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.BASIC_BOX));
-    }
+		HandleContainerActionIcons (isOpen, GestureIconBuilder.ActionHolderType.BASIC_BOX);
+	}
 
     public override void OnSelect()
     {
         SetEmission(ApplicationConstants.HIGHLIGHTED);
-        ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.BASIC_BOX));
+		HandleContainerActionIcons (isOpen, GestureIconBuilder.ActionHolderType.BASIC_BOX);
     }
 
     public override void OnDeselect()
