@@ -124,25 +124,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6574716, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6599464, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6503024, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6512962, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6554254, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6591616, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6500188, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6545076, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6516056, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6574746, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6585326, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6500092, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6535790, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6593980, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6527810, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6564282, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6591924, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
-    - {fileID: 6513696, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
+    - target: {fileID: 188936, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561526, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
+      propertyPath: m_Size.x
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561526, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
+      propertyPath: m_Size.y
+      value: 9.89999962
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31d75f265267249ffb0700718bb7cac7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &85845973 stripped

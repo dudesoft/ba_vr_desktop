@@ -5,7 +5,6 @@ public class Box : TangibleObject
 {
     private Animator animator;
     private OpenBox openBox;
-    private bool isOpen;
 
     public override void Start()
     {
@@ -82,11 +81,6 @@ public class Box : TangibleObject
         }
     }
 
-    public void SpawnIcons()
-    {
-
-    }
-
     public override void OnTriggerExit(Collider other)
     {
         base.OnTriggerExit(other);
@@ -103,13 +97,13 @@ public class Box : TangibleObject
     {
 		base.OnRelease ();
         GetComponent<Collider>().isTrigger = true;
-		HandleContainerActionIcons (isOpen, GestureIconBuilder.ActionHolderType.BASIC_BOX);
+		HandleContainerActionIcons (GestureIconBuilder.ActionHolderType.BASIC_BOX);
 	}
 
     public override void OnSelect()
     {
         SetEmission(ApplicationConstants.HIGHLIGHTED);
-		HandleContainerActionIcons (isOpen, GestureIconBuilder.ActionHolderType.BASIC_BOX);
+		HandleContainerActionIcons (GestureIconBuilder.ActionHolderType.BASIC_BOX);
     }
 
     public override void OnDeselect()

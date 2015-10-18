@@ -68,8 +68,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GridController.cs" />
-    <Compile Include="Assets\GridFieldController.cs" />
     <Compile Include="Assets\Myo Samples\Scripts\ColorBoxByPose.cs" />
     <Compile Include="Assets\Myo Samples\Scripts\JointOrientation.cs" />
     <Compile Include="Assets\Myo Samples\Scripts\SampleSceneGUI.cs" />
@@ -111,25 +109,29 @@
     <Compile Include="Assets\OVR\Scripts\Util\OVRSceneSampleController.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRTrackerBounds.cs" />
-    <Compile Include="Assets\Scripts\ActionIconHandler.cs" />
     <Compile Include="Assets\Scripts\Constants\ApplicationConstants.cs" />
+    <Compile Include="Assets\Scripts\Constants\GestureIconBuilder.cs" />
     <Compile Include="Assets\Scripts\Controller\ArmReferenceController.cs" />
     <Compile Include="Assets\Scripts\Controller\CursorController.cs" />
-    <Compile Include="Assets\Scripts\Controller\InstructionController.cs" />
-    <Compile Include="Assets\Scripts\GestureProgress.cs" />
-    <Compile Include="Assets\Scripts\Manager\GestureIconBuilder.cs" />
+    <Compile Include="Assets\Scripts\Controller\GridController.cs" />
+    <Compile Include="Assets\Scripts\Controller\GridFieldController.cs" />
+    <Compile Include="Assets\Scripts\Manager\ActionIconHandler.cs" />
+    <Compile Include="Assets\Scripts\Manager\EventManager.cs" />
     <Compile Include="Assets\Scripts\Manager\MyoMapper.cs" />
     <Compile Include="Assets\Scripts\Manager\PoseManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SelectionManager.cs" />
     <Compile Include="Assets\Scripts\Manager\TangibleManager.cs" />
     <Compile Include="Assets\Scripts\Models\ActionHolder.cs" />
+    <Compile Include="Assets\Scripts\Objects\Helper\FindHolder.cs" />
     <Compile Include="Assets\Scripts\Objects\Helper\GestureIconHolder.cs" />
+    <Compile Include="Assets\Scripts\Objects\Helper\GestureProgress.cs" />
     <Compile Include="Assets\Scripts\Objects\Helper\OpenBox.cs" />
     <Compile Include="Assets\Scripts\Objects\Tangibles\Box.cs" />
     <Compile Include="Assets\Scripts\Objects\Tangibles\Icon.cs" />
     <Compile Include="Assets\Scripts\Objects\Tangibles\ObjectStorage.cs" />
     <Compile Include="Assets\Scripts\Objects\Tangibles\TangibleObject.cs" />
     <Compile Include="Assets\Scripts\Objects\Tangibles\TangibleObjectController.cs" />
+    <Compile Include="Assets\Scripts\Objects\Tangibles\Trash.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Myo\README-MyoUnity.txt" />

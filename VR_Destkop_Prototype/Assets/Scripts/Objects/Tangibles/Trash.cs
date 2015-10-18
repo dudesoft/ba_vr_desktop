@@ -4,7 +4,6 @@ using System;
 public class Trash : TangibleObject
 {
 	private OpenBox openBox;
-	private bool isOpen;
 
 	public override void Start()
 	{
@@ -96,13 +95,13 @@ public class Trash : TangibleObject
 	public override void OnRelease()
 	{
 		GetComponent<Collider>().isTrigger = true;
-		HandleContainerActionIcons (isOpen, GestureIconBuilder.ActionHolderType.TRASH);
+		HandleContainerActionIcons (GestureIconBuilder.ActionHolderType.TRASH);
 	}
 	
 	public override void OnSelect()
 	{
 		SetEmission(ApplicationConstants.HIGHLIGHTED);
-		HandleContainerActionIcons (isOpen, GestureIconBuilder.ActionHolderType.TRASH);
+		HandleContainerActionIcons (GestureIconBuilder.ActionHolderType.TRASH);
 	}
 
 	public override void OnDeselect()

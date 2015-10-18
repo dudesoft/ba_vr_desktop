@@ -5,24 +5,25 @@ abstract public class TangibleObject : MonoBehaviour
 {
     public bool selectable = true;
     public bool tangible = true;
-	public bool deletable = true;
+    public bool deletable = true;
 
-	public bool blockGesture;
+    public bool blockGesture;
     public bool canContainObjects = false;
     public GameObject hoveringOverContainer;
 
     public PoseManager poseManager;
     public MyoMapper myoMapper;
-	public EventManager eventManager;
+    public EventManager eventManager;
 
     public bool selected;
     public bool grabbed;
-	public bool isStored;
+    public bool isStored;
+    public bool isOpen;
     private string description;
 
-	// Provide a counter for Tangibles
-	public bool counterActive;
-	public float counterValue;
+    // Provide a counter for Tangibles
+    public bool counterActive;
+    public float counterValue;
 
     // Distance to origin
     public float objectDistance;
@@ -37,16 +38,16 @@ abstract public class TangibleObject : MonoBehaviour
 
     abstract public Renderer GetRenderer();
 
-	void Awake() 
-	{
-		// Subscribe to events
-		SelectionManager.GetInstance().OnSelect += TriggerSelected;
-		SelectionManager.GetInstance().OnDeselect += TriggerDeselected;
-	}
+    void Awake()
+    {
+        // Subscribe to events
+        SelectionManager.GetInstance().OnSelect += TriggerSelected;
+        SelectionManager.GetInstance().OnDeselect += TriggerDeselected;
+    }
 
     public virtual void Start()
     {
-		eventManager = EventManager.GetInstance ();
+        eventManager = EventManager.GetInstance();
         poseManager = PoseManager.GetInstance();
         myoMapper = MyoMapper.GetInstance();
         objectRenderer = GetRenderer();
@@ -58,72 +59,76 @@ abstract public class TangibleObject : MonoBehaviour
             gameObject.AddComponent<ObjectStorage>();
         }
     }
-	
+
     public virtual void Update()
     {
         if (selected)
         {
             CheckGrabbed();
-			if (deletable) 
-			{
-				CheckDeleteGesture ();
-			}
+            if (deletable)
+            {
+                CheckDeleteGesture();
+            }
         }
 
-		if (!isStored) 
-		{
-			SetLocationAndRotation ();
-		}
+        if (!isStored)
+        {
+            SetLocationAndRotation();
+        }
 
-		if (counterActive) 
-		{
-			counterValue += Time.deltaTime;
-		} 
-		else 
-		{
-			counterValue = 0;
-		}
+        if (counterActive)
+        {
+            counterValue += Time.deltaTime;
+        }
+        else
+        {
+            counterValue = 0;
+        }
     }
 
-	void CheckDeleteGesture ()
-	{
-		if (poseManager.GetCurrentPose () == myoMapper.rest) 
-		{
-			eventManager.SetTheProgress(myoMapper.spriteMapping[myoMapper.handMapping.waveRight], 0);
-			counterActive = false;
-			blockGesture = false;
-		}
+    void CheckDeleteGesture()
+    {
+        if (poseManager.GetCurrentPose() == myoMapper.rest)
+        {
+            eventManager.SetTheProgress(myoMapper.spriteMapping[myoMapper.handMapping.waveRight], 0);
+            counterActive = false;
+            blockGesture = false;
+        }
 
-		if (poseManager.GetCurrentPose () == myoMapper.handMapping.waveRight && !blockGesture)
-		{
-			counterActive = true;
-			float progress = counterValue / 2;
-			if (progress >= 1) 
-			{
-				eventManager.MoveToTheTrash(this.gameObject);
-				gameObject.SetActive(false);
-				return;
-			}
-			eventManager.SetTheProgress(myoMapper.spriteMapping[myoMapper.handMapping.waveRight], progress);
-		}
-	}
+        if (poseManager.GetCurrentPose() == myoMapper.handMapping.waveRight && !blockGesture)
+        {
+            counterActive = true;
+            float progress = counterValue / 2;
+            if (progress >= 1)
+            {
+                eventManager.MoveToTheTrash(this.gameObject);
+                gameObject.SetActive(false);
+                return;
+            }
+            eventManager.SetTheProgress(myoMapper.spriteMapping[myoMapper.handMapping.waveRight], progress);
+        }
+    }
 
     public void ShowActionIcons(List<ActionHolder> actions)
     {
+        if (isStored)
+        {
+            return;
+        }
         iconHolder.ShowGestureIcons(actions);
     }
 
-	public void HandleContainerActionIcons(bool isOpen, GestureIconBuilder.ActionHolderType defaultAction) 
-	{
-		if (isOpen) 
-		{
-			ShowActionIcons (GestureIconBuilder.BuildActionHolderSet (GestureIconBuilder.ActionHolderType.OPEN_BOX));
-		} 
-		else 
-		{
-			ShowActionIcons (GestureIconBuilder.BuildActionHolderSet (defaultAction));
-		}
-	}
+    public void HandleContainerActionIcons(GestureIconBuilder.ActionHolderType defaultAction)
+    {
+        if (isOpen)
+        {
+            ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(GestureIconBuilder.ActionHolderType.OPEN_BOX));
+        }
+        else
+        {
+            ShowActionIcons(GestureIconBuilder.BuildActionHolderSet(defaultAction));
+        }
+    }
 
     public void HideActionIcons()
     {
@@ -154,7 +159,7 @@ abstract public class TangibleObject : MonoBehaviour
         }
     }
 
-    // react to events
+    // React to events
     void TriggerSelected(GameObject go)
     {
         if (go != gameObject)
@@ -199,7 +204,7 @@ abstract public class TangibleObject : MonoBehaviour
         }
         if (grabbed)
         {
-			isStored = false;
+            isStored = false;
             this.grabbed = true;
             OnGrab();
         }
@@ -218,12 +223,12 @@ abstract public class TangibleObject : MonoBehaviour
             grabbed = false;
             SelectionManager.GetInstance().ResetSelectedObject();
             StoreInto(hoveringOverContainer);
-		} 
-		else if (isStored)
-		{
-			isStored = false;
-			objectDistance = ApplicationConstants.DEFAULT_OBJECT_DISTANCE;
-		}
+        }
+        else if (isStored)
+        {
+            isStored = false;
+            objectDistance = ApplicationConstants.DEFAULT_OBJECT_DISTANCE;
+        }
     }
 
     public void SetEmission(Color value)
@@ -241,10 +246,10 @@ abstract public class TangibleObject : MonoBehaviour
         if (selected)
         {
             TangibleObject otherTangibleObject = other.gameObject.GetComponent<TangibleObject>();
-			if (otherTangibleObject == null) 
-			{
-				return;
-			}
+            if (otherTangibleObject == null)
+            {
+                return;
+            }
 
             if (otherTangibleObject.canContainObjects == true)
             {
@@ -264,10 +269,10 @@ abstract public class TangibleObject : MonoBehaviour
         if (selected)
         {
             TangibleObject otherTangibleObject = other.gameObject.GetComponent<TangibleObject>();
-			if (otherTangibleObject == null) 
-			{
-				return;
-			}
+            if (otherTangibleObject == null)
+            {
+                return;
+            }
             if (otherTangibleObject.canContainObjects == true)
             {
                 hoveringOverContainer = null;
@@ -284,7 +289,7 @@ abstract public class TangibleObject : MonoBehaviour
             return;
         }
 
-		isStored = true;
+        isStored = true;
         storage.Store(gameObject);
         gameObject.SetActive(false);
         // Have to call OnTriggerExit() manually when object inside gets disabled
