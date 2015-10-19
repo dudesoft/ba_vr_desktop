@@ -71,6 +71,13 @@ abstract public class TangibleObject : MonoBehaviour
                 CheckDeleteGesture();
             }
         }
+        else
+        {
+            if (isStored)
+            {
+                HideActionIcons();
+            }
+        }
 
         if (!isStored)
         {
