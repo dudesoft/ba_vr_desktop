@@ -1,26 +1,22 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 using TangibleType = ApplicationConstants.TangibleType;
 
 public class TangibleObjectController : MonoBehaviour 
 {
-    public TangibleType tangibleType;
+	public TangibleType tangibleType;
 
-    void Start()
-    {
-        // Get correct instance of the tangible object
-        switch (tangibleType)
-        {
-            case TangibleType.Icon:
-                gameObject.AddComponent<Icon>();
-                break;
-            case TangibleType.Box:
-                gameObject.AddComponent<Box>();
-                break;
-			case TangibleType.Trash:
-				gameObject.AddComponent<Trash>();
+	void Start()
+	{
+		// Get correct instance of the tangible object
+		switch (tangibleType)
+		{
+			case TangibleType.Icon:
+				gameObject.AddComponent<Icon>();
 				break;
-        }
-    }
+			case TangibleType.Box:
+				gameObject.AddComponent<Box>();
+				break;
+		}
+	}
 }

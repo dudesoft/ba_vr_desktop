@@ -5,7 +5,6 @@ public class Trash : TangibleObject
 {
 	public override void Start()
 	{
-		EventManager.GetInstance ().MoveToTrash += ReceiveObject;
 		deletable = false;
 		canContainObjects = true;
 		base.Start();
@@ -56,16 +55,6 @@ public class Trash : TangibleObject
 		if (!selected)
 		{
 			GetComponent<Collider>().isTrigger = true;
-		}
-	}
-
-	void ReceiveObject(GameObject go)
-	{
-		ObjectStorage storage = GetComponent<ObjectStorage> ();
-		if (storage == null) 
-		{
-			Debug.Log ("No Storage attached to Object!");
-			return;
 		}
 	}
 	

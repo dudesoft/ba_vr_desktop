@@ -47,6 +47,7 @@ GameObject:
   - 54: {fileID: 5427320}
   - 108: {fileID: 10887292}
   - 114: {fileID: 11480984}
+  - 114: {fileID: 11422826}
   m_Layer: 0
   m_Name: Application Object
   m_TagString: Tangible
@@ -462,7 +463,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .5, y: 2.5999999, z: 7.57999992}
+  m_LocalPosition: {x: -2.15000153, y: -3.53999901, z: 8.06000042}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 432818}
@@ -633,7 +634,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: beca7d66ce77b41769cf37f1a0f2c355, type: 2}
+  - {fileID: 2100000, guid: 2400f95bc12e9eb428c478480c5202c4, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -889,9 +890,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194490}
-  m_Text: Hello World
+  m_Text: PS_2.jpg
   m_OffsetZ: 0
-  m_CharacterSize: .300000012
+  m_CharacterSize: .200000003
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
@@ -1024,6 +1025,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconHolder: {fileID: 139218}
+--- !u!114 &11422826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865a02f9aa932ca4b9514ba948a930ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delete: {fileID: 8300000, guid: 523fcfa18ea6e624a92f087c9d784713, type: 3}
+  store: {fileID: 8300000, guid: 8b56cfa7fe0be6f4b887594ad63f2bad, type: 3}
 --- !u!114 &11447184
 MonoBehaviour:
   m_ObjectHideFlags: 1

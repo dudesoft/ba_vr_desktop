@@ -51,17 +51,11 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
@@ -129,13 +123,13 @@
     <Compile Include="Assets\Scripts\Manager\SelectionManager.cs" />
     <Compile Include="Assets\Scripts\Manager\TangibleManager.cs" />
     <Compile Include="Assets\Scripts\Models\ActionHolder.cs" />
+    <Compile Include="Assets\Scripts\Objects\Helper\DrawLine.cs" />
     <Compile Include="Assets\Scripts\Objects\Helper\FindHolder.cs" />
     <Compile Include="Assets\Scripts\Objects\Helper\GestureIconHolder.cs" />
     <Compile Include="Assets\Scripts\Objects\Helper\GestureProgress.cs" />
-    <Compile Include="Assets\Scripts\Objects\Helper\OpenBox.cs" />
+    <Compile Include="Assets\Scripts\Objects\Helper\SoundController.cs" />
     <Compile Include="Assets\Scripts\Objects\Tangibles\Box.cs" />
     <Compile Include="Assets\Scripts\Objects\Tangibles\Icon.cs" />
-    <Compile Include="Assets\Scripts\Objects\Tangibles\ObjectStorage.cs" />
     <Compile Include="Assets\Scripts\Objects\Tangibles\TangibleObject.cs" />
     <Compile Include="Assets\Scripts\Objects\Tangibles\TangibleObjectController.cs" />
     <Compile Include="Assets\Scripts\Objects\Tangibles\Trash.cs" />

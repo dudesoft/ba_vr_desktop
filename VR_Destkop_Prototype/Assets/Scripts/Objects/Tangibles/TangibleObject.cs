@@ -54,11 +54,6 @@ abstract public class TangibleObject : MonoBehaviour
         objectRenderer = GetRenderer();
         objectDistance = ApplicationConstants.DEFAULT_OBJECT_DISTANCE;
         iconHolder = GetComponentInChildren<GestureIconHolder>();
-
-        if (canContainObjects)
-        {
-            gameObject.AddComponent<ObjectStorage>();
-        }
     }
 
     public virtual void Update()
@@ -109,7 +104,8 @@ abstract public class TangibleObject : MonoBehaviour
             float progress = counterValue / 2;
             if (progress >= 1)
             {
-                eventManager.MoveToTheTrash(this.gameObject);
+                GetComponent<SoundController>().Delete();
+                eventManager.MoveToTheTrash(gameObject);
                 gameObject.SetActive(false);
                 return;
             }
@@ -296,13 +292,7 @@ abstract public class TangibleObject : MonoBehaviour
 
     public virtual void StoreInto(GameObject container)
     {
-        ObjectStorage storage = container.GetComponent<ObjectStorage>();
-        if (storage == null)
-        {
-            Debug.Log("Container has no Component ObjectStorage!");
-            return;
-        }
-
+        GetComponent<SoundController>().Store();
         isStored = true;
         SetSelected(false);
         container.GetComponentInChildren<GridController>().Store(gameObject);

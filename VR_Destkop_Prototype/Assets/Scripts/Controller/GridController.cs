@@ -28,6 +28,24 @@ public class GridController : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        //foreach (GameObject storage in storageHolder)
+        //{
+        //    if (storage.transform.childCount == 0)
+        //    {
+        //        if (storage.GetComponent<LineRenderer>() != null)
+        //        {
+        //            return;
+        //        }
+        //        LineRenderer connection = storage.AddComponent<LineRenderer>();
+        //        connection.SetPosition(0, storage.transform.position);
+        //        connection.SetPosition(1, boxParent.transform.position);
+        //        break;
+        //    }
+        //}
+    }
+
     public void Open()
     {
         foreach(GameObject go in storedObjects)

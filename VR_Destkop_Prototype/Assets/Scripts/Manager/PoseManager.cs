@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class PoseManager : MonoBehaviour {
 
@@ -12,7 +11,7 @@ public class PoseManager : MonoBehaviour {
     {
         if (!instance)
         {
-            instance = (PoseManager)GameObject.FindObjectOfType(typeof(PoseManager));
+            instance = (PoseManager)FindObjectOfType(typeof(PoseManager));
         }
         return instance;
     }

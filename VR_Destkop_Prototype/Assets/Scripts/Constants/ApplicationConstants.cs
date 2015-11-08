@@ -26,8 +26,7 @@ public class ApplicationConstants : MonoBehaviour
 	public enum TangibleType
 	{
 		Icon,
-		Box,
-		Trash
+		Box
 	}
 
 	// Class with tag names
